@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/simbirsoft-workshop/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/simbirsoft-workshop/static/js/main.9d1ce0f8.chunk.js",
+    "main.js.map": "/simbirsoft-workshop/static/js/main.9d1ce0f8.chunk.js.map",
+    "runtime-main.js": "/simbirsoft-workshop/static/js/runtime-main.c376626d.js",
+    "runtime-main.js.map": "/simbirsoft-workshop/static/js/runtime-main.c376626d.js.map",
+    "static/js/2.cc7f2a18.chunk.js": "/simbirsoft-workshop/static/js/2.cc7f2a18.chunk.js",
+    "static/js/2.cc7f2a18.chunk.js.map": "/simbirsoft-workshop/static/js/2.cc7f2a18.chunk.js.map",
+    "static/js/3.07455efb.chunk.js": "/simbirsoft-workshop/static/js/3.07455efb.chunk.js",
+    "static/js/3.07455efb.chunk.js.map": "/simbirsoft-workshop/static/js/3.07455efb.chunk.js.map",
+    "index.html": "/simbirsoft-workshop/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/simbirsoft-workshop/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.cc7f2a18.chunk.js.LICENSE.txt": "/simbirsoft-workshop/static/js/2.cc7f2a18.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/simbirsoft-workshop/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c376626d.js",
+    "static/js/2.cc7f2a18.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.9d1ce0f8.chunk.js"
+  ]
+}
