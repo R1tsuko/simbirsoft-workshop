@@ -1,0 +1,96 @@
+.mainPage {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 90px 1fr 72px;
+}
+
+.footer {
+  background-color: #151b1f;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.phone {
+  font-size: 13px;
+  color: #0ec261;
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+
+.companyInfo {
+  font-size: 13px;
+  color: #eee;
+  margin-top: 4px;
+}
+
+.promoHeader {
+  text-align: left;
+
+  .title {
+    font-size: 10vw;
+    font-weight: bold;
+    margin-left: 16px;
+    margin-bottom: 0px;
+  }
+
+  .subtitle {
+    font-size: 10vw;
+    font-weight: bold;
+    color: #0ec261;
+    margin-left: 16px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+
+  .text {
+    font-size: 5.625vw;
+    font-weight: lighter;
+    color: #999999;
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-bottom: 32px;
+  }
+
+  .action {
+    width: 100vw;
+    height: 50px;
+    border: none;
+    background: linear-gradient(90deg, #0ec261 2.61%, #039f67 112.6%);
+    background-blend-mode: darken;
+    font-size: 18px;
+    color: #eee;
+  }
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    margin: 0;
+    color: #0ec261;
+    font-weight: bold;
+    font-size: 30px;
+  }
+}
+
+.headerBottom {
+  display: flex;
+  justify-content: end;
+  margin-top: 8px;
+
+  p {
+    color: #999999;
+    font-size: 14px;
+    margin: 0;
+  }
+
+  img {
+    margin-right: 7.5px;
+  }
+}
+
+.header {
+  padding: 16px;
+}
