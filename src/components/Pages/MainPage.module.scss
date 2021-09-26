@@ -20,7 +20,7 @@ $desktop-padding: 64px;
 
     .subject {
       color: $main-accent;
-      font-weight: bold;
+      font-weight: 700;
       font-size: 30px;
     }
   }
@@ -77,21 +77,21 @@ $desktop-padding: 64px;
 
   .title {
     font-size: 32px;
-    font-weight: bold;
+    font-weight: 700;
     margin-bottom: 0px;
     padding: 0 $mobile-padding;
   }
 
   .subtitle {
     font-size: 32px;
-    font-weight: bold;
+    font-weight: 700;
     color: $main-accent;
     padding: 0 $mobile-padding;
   }
 
   .text {
     font-size: 18px;
-    font-weight: lighter;
+    font-weight: 300;
     color: $gray-dark;
     padding: $mobile-padding;
   }
@@ -184,7 +184,7 @@ $desktop-padding: 64px;
     }
 
     .companyInfo {
-      color: $main-black;
+      color: $gray-dark;
     }
   }
 }
