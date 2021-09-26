@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/simbirsoft-workshop/static/css/main.c374353f.chunk.css",
-    "main.js": "/simbirsoft-workshop/static/js/main.04971880.chunk.js",
-    "main.js.map": "/simbirsoft-workshop/static/js/main.04971880.chunk.js.map",
+    "main.js": "/simbirsoft-workshop/static/js/main.51d6c3f8.chunk.js",
+    "main.js.map": "/simbirsoft-workshop/static/js/main.51d6c3f8.chunk.js.map",
     "runtime-main.js": "/simbirsoft-workshop/static/js/runtime-main.44e114ed.js",
     "runtime-main.js.map": "/simbirsoft-workshop/static/js/runtime-main.44e114ed.js.map",
     "static/css/2.e9335a12.chunk.css": "/simbirsoft-workshop/static/css/2.e9335a12.chunk.css",
@@ -27,6 +27,6 @@
     "static/css/2.e9335a12.chunk.css",
     "static/js/2.63768673.chunk.js",
     "static/css/main.c374353f.chunk.css",
-    "static/js/main.04971880.chunk.js"
+    "static/js/main.51d6c3f8.chunk.js"
   ]
 }
