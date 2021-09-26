@@ -2,3 +2,9 @@
   text-align: center;
 }
 
+@media (min-width: 768px) {
+  .appWrapper {
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+}
