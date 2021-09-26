@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/simbirsoft-workshop/static/css/main.c374353f.chunk.css",
-    "main.js": "/simbirsoft-workshop/static/js/main.51d6c3f8.chunk.js",
-    "main.js.map": "/simbirsoft-workshop/static/js/main.51d6c3f8.chunk.js.map",
+    "main.css": "/simbirsoft-workshop/static/css/main.641fb0d7.chunk.css",
+    "main.js": "/simbirsoft-workshop/static/js/main.f2ae5089.chunk.js",
+    "main.js.map": "/simbirsoft-workshop/static/js/main.f2ae5089.chunk.js.map",
     "runtime-main.js": "/simbirsoft-workshop/static/js/runtime-main.44e114ed.js",
     "runtime-main.js.map": "/simbirsoft-workshop/static/js/runtime-main.44e114ed.js.map",
     "static/css/2.e9335a12.chunk.css": "/simbirsoft-workshop/static/css/2.e9335a12.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.6e1e9cf7.chunk.js.map": "/simbirsoft-workshop/static/js/3.6e1e9cf7.chunk.js.map",
     "index.html": "/simbirsoft-workshop/index.html",
     "static/css/2.e9335a12.chunk.css.map": "/simbirsoft-workshop/static/css/2.e9335a12.chunk.css.map",
-    "static/css/main.c374353f.chunk.css.map": "/simbirsoft-workshop/static/css/main.c374353f.chunk.css.map",
+    "static/css/main.641fb0d7.chunk.css.map": "/simbirsoft-workshop/static/css/main.641fb0d7.chunk.css.map",
     "static/js/2.63768673.chunk.js.LICENSE.txt": "/simbirsoft-workshop/static/js/2.63768673.chunk.js.LICENSE.txt",
     "static/media/CloseMenu.2990540f.svg": "/simbirsoft-workshop/static/media/CloseMenu.2990540f.svg",
     "static/media/FacebookIcon.c1876cc3.svg": "/simbirsoft-workshop/static/media/FacebookIcon.c1876cc3.svg",
@@ -20,13 +20,14 @@
     "static/media/LocationIcon.9d09636f.svg": "/simbirsoft-workshop/static/media/LocationIcon.9d09636f.svg",
     "static/media/MenuIconBlack.72b7fc2e.svg": "/simbirsoft-workshop/static/media/MenuIconBlack.72b7fc2e.svg",
     "static/media/MenuIconWhite.cec3097c.svg": "/simbirsoft-workshop/static/media/MenuIconWhite.cec3097c.svg",
+    "static/media/index.scss": "/simbirsoft-workshop/static/media/Roboto-Regular.d08b3cc8.ttf",
     "static/media/TelegramIcon.e8137bbe.svg": "/simbirsoft-workshop/static/media/TelegramIcon.e8137bbe.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.44e114ed.js",
     "static/css/2.e9335a12.chunk.css",
     "static/js/2.63768673.chunk.js",
-    "static/css/main.c374353f.chunk.css",
-    "static/js/main.51d6c3f8.chunk.js"
+    "static/css/main.641fb0d7.chunk.css",
+    "static/js/main.f2ae5089.chunk.js"
   ]
 }
