@@ -1,33 +1,30 @@
 {
   "files": {
-    "main.css": "/simbirsoft-workshop/static/css/main.bbdd5f64.chunk.css",
-    "main.js": "/simbirsoft-workshop/static/js/main.f2ae5089.chunk.js",
-    "main.js.map": "/simbirsoft-workshop/static/js/main.f2ae5089.chunk.js.map",
-    "runtime-main.js": "/simbirsoft-workshop/static/js/runtime-main.44e114ed.js",
-    "runtime-main.js.map": "/simbirsoft-workshop/static/js/runtime-main.44e114ed.js.map",
+    "main.css": "/simbirsoft-workshop/static/css/main.1815c506.chunk.css",
+    "main.js": "/simbirsoft-workshop/static/js/main.e7882e55.chunk.js",
+    "main.js.map": "/simbirsoft-workshop/static/js/main.e7882e55.chunk.js.map",
+    "runtime-main.js": "/simbirsoft-workshop/static/js/runtime-main.a184052e.js",
+    "runtime-main.js.map": "/simbirsoft-workshop/static/js/runtime-main.a184052e.js.map",
     "static/css/2.e9335a12.chunk.css": "/simbirsoft-workshop/static/css/2.e9335a12.chunk.css",
-    "static/js/2.63768673.chunk.js": "/simbirsoft-workshop/static/js/2.63768673.chunk.js",
-    "static/js/2.63768673.chunk.js.map": "/simbirsoft-workshop/static/js/2.63768673.chunk.js.map",
-    "static/js/3.6e1e9cf7.chunk.js": "/simbirsoft-workshop/static/js/3.6e1e9cf7.chunk.js",
-    "static/js/3.6e1e9cf7.chunk.js.map": "/simbirsoft-workshop/static/js/3.6e1e9cf7.chunk.js.map",
+    "static/js/2.1b7f9272.chunk.js": "/simbirsoft-workshop/static/js/2.1b7f9272.chunk.js",
+    "static/js/2.1b7f9272.chunk.js.map": "/simbirsoft-workshop/static/js/2.1b7f9272.chunk.js.map",
+    "static/js/3.303e41fc.chunk.js": "/simbirsoft-workshop/static/js/3.303e41fc.chunk.js",
+    "static/js/3.303e41fc.chunk.js.map": "/simbirsoft-workshop/static/js/3.303e41fc.chunk.js.map",
     "index.html": "/simbirsoft-workshop/index.html",
     "static/css/2.e9335a12.chunk.css.map": "/simbirsoft-workshop/static/css/2.e9335a12.chunk.css.map",
-    "static/css/main.bbdd5f64.chunk.css.map": "/simbirsoft-workshop/static/css/main.bbdd5f64.chunk.css.map",
-    "static/js/2.63768673.chunk.js.LICENSE.txt": "/simbirsoft-workshop/static/js/2.63768673.chunk.js.LICENSE.txt",
-    "static/media/CloseMenu.2990540f.svg": "/simbirsoft-workshop/static/media/CloseMenu.2990540f.svg",
-    "static/media/FacebookIcon.c1876cc3.svg": "/simbirsoft-workshop/static/media/FacebookIcon.c1876cc3.svg",
-    "static/media/InstagramIcon.98094ec4.svg": "/simbirsoft-workshop/static/media/InstagramIcon.98094ec4.svg",
-    "static/media/LocationIcon.9d09636f.svg": "/simbirsoft-workshop/static/media/LocationIcon.9d09636f.svg",
-    "static/media/MenuIconBlack.72b7fc2e.svg": "/simbirsoft-workshop/static/media/MenuIconBlack.72b7fc2e.svg",
-    "static/media/MenuIconWhite.cec3097c.svg": "/simbirsoft-workshop/static/media/MenuIconWhite.cec3097c.svg",
-    "static/media/index.scss": "/simbirsoft-workshop/static/media/Roboto-Regular.d08b3cc8.ttf",
-    "static/media/TelegramIcon.e8137bbe.svg": "/simbirsoft-workshop/static/media/TelegramIcon.e8137bbe.svg"
+    "static/css/main.1815c506.chunk.css.map": "/simbirsoft-workshop/static/css/main.1815c506.chunk.css.map",
+    "static/js/2.1b7f9272.chunk.js.LICENSE.txt": "/simbirsoft-workshop/static/js/2.1b7f9272.chunk.js.LICENSE.txt",
+    "static/media/CloseMenu.1d4598cc.svg": "/simbirsoft-workshop/static/media/CloseMenu.1d4598cc.svg",
+    "static/media/LocationIcon.6d4a93c7.svg": "/simbirsoft-workshop/static/media/LocationIcon.6d4a93c7.svg",
+    "static/media/MenuIconBlack.c006b7cf.svg": "/simbirsoft-workshop/static/media/MenuIconBlack.c006b7cf.svg",
+    "static/media/MenuIconWhite.33a03786.svg": "/simbirsoft-workshop/static/media/MenuIconWhite.33a03786.svg",
+    "static/media/index.scss": "/simbirsoft-workshop/static/media/Roboto-Regular.a8d6ac03.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.44e114ed.js",
+    "static/js/runtime-main.a184052e.js",
     "static/css/2.e9335a12.chunk.css",
-    "static/js/2.63768673.chunk.js",
-    "static/css/main.bbdd5f64.chunk.css",
-    "static/js/main.f2ae5089.chunk.js"
+    "static/js/2.1b7f9272.chunk.js",
+    "static/css/main.1815c506.chunk.css",
+    "static/js/main.e7882e55.chunk.js"
   ]
 }
