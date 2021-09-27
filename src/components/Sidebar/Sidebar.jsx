@@ -1,11 +1,17 @@
-import s from './Sidebar.module.scss';
+import Styles from './Sidebar.module.scss';
 import menuButton from '../../assets/icons/MenuIconWhite.svg';
 import LanguageButton from '../LanguageButton/LanguageButton';
 
 const Sidebar = ({ openMenu }) => {
   return (
-    <div className={s.sidebar}>
-      <input className={s.menuButton} onClick={openMenu} type="image" src={menuButton} alt="menu" />
+    <div className={Styles.sidebar}>
+      <input
+        className={Styles.menuButton}
+        onClick={openMenu}
+        type="image"
+        src={menuButton}
+        alt="menu"
+      />
       <LanguageButton />
     </div>
   );

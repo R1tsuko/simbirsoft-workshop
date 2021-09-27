@@ -1,8 +1,8 @@
-import s from './LanguageButton.module.scss';
+import styles from './LanguageButton.module.scss';
 
 const LanguageButton = () => {
   return (
-    <button className={s.language} type="button">
+    <button className={styles.language} type="button">
       Eng
     </button>
   );

@@ -1,46 +1,46 @@
-import s from './MainPage.module.scss';
+import styles from './MainPage.module.scss';
 import burgerMenuButton from '../../assets/icons/MenuIconBlack.svg';
 import locationIcon from '../../assets/icons/LocationIcon.svg';
 
 const MainPage = ({ openMenu }) => {
   return (
-    <div className={s.pageContainer}>
-      <header className={s.header}>
-        <div className={s.title}>
+    <div className={styles.pageContainer}>
+      <header className={styles.header}>
+        <div className={styles.title}>
           <input
-            className={s.menuButton}
+            className={styles.menuButton}
             onClick={openMenu}
             type="image"
             src={burgerMenuButton}
             alt="menu"
           />
-          <p className={s.subject}>Need for drive</p>
+          <p className={styles.subject}>Need for drive</p>
         </div>
-        <div className={s.location}>
-          <img className={s.locationIcon} src={locationIcon} alt="location" />
-          <p className={s.subject}>Ульяновск</p>
+        <div className={styles.location}>
+          <img className={styles.locationIcon} src={locationIcon} alt="location" />
+          <p className={styles.subject}>Ульяновск</p>
         </div>
       </header>
 
-      <main className={s.main}>
-        <div className={s.promoHeader}>
-          <p className={s.title}>Каршеринг</p>
-          <p className={s.subtitle}>Need for drive</p>
-          <p className={s.text}>Поминутная аренда авто твоего города</p>
-          <button className={s.action} type="button">
+      <main className={styles.main}>
+        <div className={styles.promoHeader}>
+          <p className={styles.title}>Каршеринг</p>
+          <p className={styles.subtitle}>Need for drive</p>
+          <p className={styles.text}>Поминутная аренда авто твоего города</p>
+          <button className={styles.action} type="button">
             Забронировать
           </button>
         </div>
       </main>
 
-      <footer className={s.footer}>
-        <a className={s.phone} href="tel:+79452342244">
+      <footer className={styles.footer}>
+        <a className={styles.phone} href="tel:+79452342244">
           8 (945) 234-22-44
         </a>
-        <p className={s.companyInfo}>&#169; 2016-2019 &rdquo;Need for drive&rdquo;</p>
+        <p className={styles.companyInfo}>&#169; 2016-2019 &rdquo;Need for drive&rdquo;</p>
       </footer>
 
-      <div className={s.sliderStub} />
+      <div className={styles.sliderStub} />
     </div>
   );
 };

@@ -71,6 +71,14 @@
 
     .socLink {
       margin-right: 18px;
+
+      .socIcon {
+        fill: white;
+
+        &:hover {
+          fill: $main-accent;
+        }
+      }
     }
   }
 
