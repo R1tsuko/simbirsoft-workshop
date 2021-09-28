@@ -1,30 +1,36 @@
 {
   "files": {
-    "main.css": "/simbirsoft-workshop/static/css/main.1815c506.chunk.css",
-    "main.js": "/simbirsoft-workshop/static/js/main.e7882e55.chunk.js",
-    "main.js.map": "/simbirsoft-workshop/static/js/main.e7882e55.chunk.js.map",
-    "runtime-main.js": "/simbirsoft-workshop/static/js/runtime-main.a184052e.js",
-    "runtime-main.js.map": "/simbirsoft-workshop/static/js/runtime-main.a184052e.js.map",
+    "main.css": "/simbirsoft-workshop/static/css/main.579295f6.chunk.css",
+    "main.js": "/simbirsoft-workshop/static/js/main.9515349a.chunk.js",
+    "main.js.map": "/simbirsoft-workshop/static/js/main.9515349a.chunk.js.map",
+    "runtime-main.js": "/simbirsoft-workshop/static/js/runtime-main.44e114ed.js",
+    "runtime-main.js.map": "/simbirsoft-workshop/static/js/runtime-main.44e114ed.js.map",
     "static/css/2.e9335a12.chunk.css": "/simbirsoft-workshop/static/css/2.e9335a12.chunk.css",
-    "static/js/2.1b7f9272.chunk.js": "/simbirsoft-workshop/static/js/2.1b7f9272.chunk.js",
-    "static/js/2.1b7f9272.chunk.js.map": "/simbirsoft-workshop/static/js/2.1b7f9272.chunk.js.map",
-    "static/js/3.303e41fc.chunk.js": "/simbirsoft-workshop/static/js/3.303e41fc.chunk.js",
-    "static/js/3.303e41fc.chunk.js.map": "/simbirsoft-workshop/static/js/3.303e41fc.chunk.js.map",
+    "static/js/2.697d50e2.chunk.js": "/simbirsoft-workshop/static/js/2.697d50e2.chunk.js",
+    "static/js/2.697d50e2.chunk.js.map": "/simbirsoft-workshop/static/js/2.697d50e2.chunk.js.map",
+    "static/js/3.6e1e9cf7.chunk.js": "/simbirsoft-workshop/static/js/3.6e1e9cf7.chunk.js",
+    "static/js/3.6e1e9cf7.chunk.js.map": "/simbirsoft-workshop/static/js/3.6e1e9cf7.chunk.js.map",
     "index.html": "/simbirsoft-workshop/index.html",
     "static/css/2.e9335a12.chunk.css.map": "/simbirsoft-workshop/static/css/2.e9335a12.chunk.css.map",
-    "static/css/main.1815c506.chunk.css.map": "/simbirsoft-workshop/static/css/main.1815c506.chunk.css.map",
-    "static/js/2.1b7f9272.chunk.js.LICENSE.txt": "/simbirsoft-workshop/static/js/2.1b7f9272.chunk.js.LICENSE.txt",
+    "static/css/main.579295f6.chunk.css.map": "/simbirsoft-workshop/static/css/main.579295f6.chunk.css.map",
+    "static/js/2.697d50e2.chunk.js.LICENSE.txt": "/simbirsoft-workshop/static/js/2.697d50e2.chunk.js.LICENSE.txt",
+    "static/media/ArrowLeft.dd0226d1.svg": "/simbirsoft-workshop/static/media/ArrowLeft.dd0226d1.svg",
+    "static/media/ArrowRight.9d87137d.svg": "/simbirsoft-workshop/static/media/ArrowRight.9d87137d.svg",
     "static/media/CloseMenu.1d4598cc.svg": "/simbirsoft-workshop/static/media/CloseMenu.1d4598cc.svg",
     "static/media/LocationIcon.6d4a93c7.svg": "/simbirsoft-workshop/static/media/LocationIcon.6d4a93c7.svg",
     "static/media/MenuIconBlack.c006b7cf.svg": "/simbirsoft-workshop/static/media/MenuIconBlack.c006b7cf.svg",
     "static/media/MenuIconWhite.33a03786.svg": "/simbirsoft-workshop/static/media/MenuIconWhite.33a03786.svg",
-    "static/media/index.scss": "/simbirsoft-workshop/static/media/Roboto-Regular.a8d6ac03.ttf"
+    "static/media/index.scss": "/simbirsoft-workshop/static/media/Roboto-Regular.a8d6ac03.ttf",
+    "static/media/slide1.2a2a7f26.jpg": "/simbirsoft-workshop/static/media/slide1.2a2a7f26.jpg",
+    "static/media/slide2.1ff52419.jpg": "/simbirsoft-workshop/static/media/slide2.1ff52419.jpg",
+    "static/media/slide3.2d283c17.jpg": "/simbirsoft-workshop/static/media/slide3.2d283c17.jpg",
+    "static/media/slide4.39fed2d3.jpg": "/simbirsoft-workshop/static/media/slide4.39fed2d3.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.a184052e.js",
+    "static/js/runtime-main.44e114ed.js",
     "static/css/2.e9335a12.chunk.css",
-    "static/js/2.1b7f9272.chunk.js",
-    "static/css/main.1815c506.chunk.css",
-    "static/js/main.e7882e55.chunk.js"
+    "static/js/2.697d50e2.chunk.js",
+    "static/css/main.579295f6.chunk.css",
+    "static/js/main.9515349a.chunk.js"
   ]
 }
