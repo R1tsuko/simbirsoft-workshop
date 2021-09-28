@@ -1,6 +1,7 @@
 import styles from './MainPage.module.scss';
 import burgerMenuButton from '../../assets/icons/MenuIconBlack.svg';
 import locationIcon from '../../assets/icons/LocationIcon.svg';
+import Carousel from '../Carousel/Carousel';
 
 const MainPage = ({ openMenu }) => {
   return (
@@ -40,7 +41,7 @@ const MainPage = ({ openMenu }) => {
         <p className={styles.companyInfo}>&#169; 2016-2019 &rdquo;Need for drive&rdquo;</p>
       </footer>
 
-      <div className={styles.sliderStub} />
+      <Carousel />
     </div>
   );
 };
