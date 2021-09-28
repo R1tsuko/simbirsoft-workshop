@@ -24,14 +24,14 @@ const MainPage = ({ openMenu }) => {
       </header>
 
       <main className={styles.main}>
-        <div className={styles.promoHeader}>
-          <p className={styles.title}>Каршеринг</p>
+        <section className={styles.promoHeader}>
+          <h1 className={styles.title}>Каршеринг</h1>
           <p className={styles.subtitle}>Need for drive</p>
           <p className={styles.text}>Поминутная аренда авто твоего города</p>
           <button className={styles.action} type="button">
             Забронировать
           </button>
-        </div>
+        </section>
       </main>
 
       <footer className={styles.footer}>

@@ -1,40 +1,151 @@
+@import '../../assets/styles/colors.scss';
+@import '../../assets/styles/dimensions.scss';
+@import '../../assets/styles/mixins.scss';
+
 .carouselContainer {
-  grid-area: slider;
-  position: relative;
+  display: none;
 }
 
-.slider {
-  position: absolute;
-  display: flex;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
+@media (min-width: 1024px) {
+  .carouselContainer {
+    display: block;
+    grid-area: slider;
+    position: relative;
+  }
 
-  .slide {
-    width: 100%;
-    text-align: center;
+  .slider {
     position: absolute;
-    background-color: gray;
-    transition: all 0.2s;
+    display: flex;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+
+    .slideWrapper {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      background-color: gray;
+      transition: all 0.2s;
+
+      .slide {
+        mix-blend-mode: normal;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 0 $tablet-padding * 2;
+
+        .content {
+          text-align: left;
+          margin-bottom: 100px;
+
+          .title {
+            font-size: 40px;
+            font-weight: 500;
+            color: white;
+          }
+
+          .text {
+            margin-top: 16px;
+            font-size: 24px;
+            font-weight: 300;
+            line-height: 24px;
+            color: $gray-light;
+          }
+
+          .action {
+            position: absolute;
+            z-index: 1;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: 500;
+            color: $gray-light;
+            width: 164px;
+            height: 48px;
+            border: none;
+            cursor: pointer;
+            margin-top: 32px;
+
+            @include button-states;
+          }
+
+          .action1 {
+            background: linear-gradient(90deg, #13493f 0%, #0c7b1b 100%);
+          }
+          .action2 {
+            background: linear-gradient(90deg, #132949 0%, #0c7b67 100%);
+          }
+          .action3 {
+            background: linear-gradient(90deg, #493013 0%, #7b0c3b 100%);
+          }
+          .action4 {
+            background: linear-gradient(90deg, #281349 0%, #720c7b 100%);
+          }
+        }
+      }
+    }
+
+    .prevSlide {
+      transform: translateX(-100%);
+    }
+    .nextSlide {
+      transform: translateX(100%);
+    }
   }
 
-  .prevSlide {
-    transform: translateX(-100%);
-  }
-  .nextSlide {
-    transform: translateX(100%);
+  .controls {
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    width: 100%;
+
+    .arrow {
+      cursor: pointer;
+      height: 100%;
+      width: $tablet-padding;
+      background-color: rgba(14, 194, 97, 0);
+      border: none;
+
+      &:hover {
+        background-color: rgba(14, 194, 97, 0.2);
+      }
+    }
+
+    .dots {
+      flex-grow: 1;
+      margin-bottom: 32px;
+
+      .dot {
+        cursor: pointer;
+        padding: 4px;
+        background-color: white;
+        border: none;
+        border-radius: 10px;
+        margin: 5px;
+
+        &.active {
+          background-color: $main-accent;
+        }
+      }
+    }
   }
 }
 
-.controls {
-  position: absolute;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  height: 100%;
-  width: 100%;
-
-  .arrow {
-    height: 100%;
-    width: 30px;
+@media (min-width: 1440px) {
+  .slider {
+    .slideWrapper {
+      .slide {
+        padding: 0 $desktop-padding * 2;
+      }
+    }
+  }
+  .controls {
+    .arrow {
+      width: $desktop-padding;
+    }
   }
 }

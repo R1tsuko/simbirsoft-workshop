@@ -1,9 +1,6 @@
 @import '../../assets/styles/colors.scss';
 @import '../../assets/styles/dimensions.scss';
-
-$mobile-padding: 16px;
-$tablet-padding: 32px;
-$desktop-padding: 64px;
+@import '../../assets/styles/mixins.scss';
 
 .pageContainer {
   display: grid;
@@ -73,7 +70,7 @@ $desktop-padding: 64px;
 
 .promoHeader {
   text-align: left;
-  margin-top: 10vh;
+  margin-top: 60px;
 
   .title {
     font-size: 32px;
@@ -106,13 +103,7 @@ $desktop-padding: 64px;
     font-size: 18px;
     color: white;
 
-    &:hover {
-      filter: brightness(90%);
-    }
-
-    &:active {
-      filter: brightness(80%);
-    }
+    @include button-states;
   }
 }
 
@@ -140,8 +131,13 @@ $desktop-padding: 64px;
     }
   }
 
+  .main {
+    display: flex;
+    align-items: center;
+  }
   .promoHeader {
     padding: $tablet-padding;
+    margin-top: 0;
 
     .title {
       font-size: 70px;
