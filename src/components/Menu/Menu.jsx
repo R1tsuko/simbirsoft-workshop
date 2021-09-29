@@ -1,7 +1,7 @@
 import classNames from 'classnames';
+import styles from './Menu.module.scss';
 import closeMenuIcon from '../../assets/icons/CloseMenu.svg';
 import LanguageButton from '../LanguageButton/LanguageButton';
-import styles from './Menu.module.scss';
 
 const Menu = ({ closeMenu, isOpened }) => {
   return (

@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import s from './App.module.scss';
-import Menu from './components/Menu/Menu';
 import MainPage from './components/Pages/MainPages';
 import Sidebar from './components/Sidebar/Sidebar';
+import Menu from './components/Menu/Menu';
+import styles from './App.module.scss';
 
 const App = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false);
 
   return (
-    <div className={s.appWrapper}>
+    <div className={styles.appWrapper}>
       <Sidebar openMenu={() => setIsMenuOpened(true)} />
       <MainPage openMenu={() => setIsMenuOpened(true)} />
       <Menu closeMenu={() => setIsMenuOpened(false)} isOpened={isMenuOpened} />
