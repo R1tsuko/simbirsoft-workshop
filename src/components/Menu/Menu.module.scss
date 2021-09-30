@@ -1,0 +1,155 @@
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/dimensions.scss";
+
+.menuContainer {
+  text-align: left;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  transform: translateX(-200%);
+  transition: all 0.2s;
+
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+.blur {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 100vw;
+  backdrop-filter: brightness(40%);
+}
+
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: #111518;
+  transition: all 0.2s;
+
+  .menuButton {
+    margin-top: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .nav {
+    font-size: 22px;
+    margin-left: 28px;
+    margin-top: 28px;
+
+    .navLink {
+      text-decoration: none;
+      color: white;
+
+      &:hover {
+        color: $main-accent;
+      }
+    }
+
+    ul {
+      list-style-type: none;
+
+      li {
+        margin-top: 4px;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  .socLinks {
+    margin-left: 28px;
+    margin-top: 38px;
+
+    .socLink {
+      margin-right: 18px;
+
+      .socIcon {
+        fill: white;
+
+        &:hover {
+          fill: $main-accent;
+        }
+      }
+    }
+  }
+
+  .languageButtonWrapper {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .menuContent {
+    .menuButtonWrapper {
+      flex-grow: 1;
+      height: 0;
+
+      .menuButton {
+        margin-left: 16px;
+        margin-top: 32px;
+      }
+    }
+
+    .nav {
+      font-size: 28px;
+      margin-left: 96px;
+
+      ul {
+        li {
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .socLinks {
+      margin-left: 96px;
+      flex-grow: 1;
+      height: 0;
+    }
+
+    .languageButtonWrapper {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .menuContent {
+    width: $desktop-sidebar-width + $desktop-min-main-width;
+
+    .nav {
+      font-size: 32px;
+    }
+  }
+  .blur {
+    left: $desktop-sidebar-width + $desktop-min-main-width;
+  }
+}
+
+@media (min-width: 1440px) {
+  .menuContent {
+    width: $desktop-sidebar-width + $desktop-main-width;
+
+    .nav {
+      margin-left: 128px;
+    }
+
+    .socLinks {
+      margin-left: 128px;
+    }
+  }
+  .blur {
+    left: $desktop-sidebar-width + $desktop-main-width;
+  }
+}
