@@ -1,0 +1,163 @@
+@import '../../../assets/styles/dimensions.scss';
+@import '../../../assets/styles/colors.scss';
+
+.pageContainer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.navContainer {
+  display: none;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  .orderInfo {
+    .content {
+      display: none;
+    }
+
+    .actionWrapper {
+      margin-top: $mobile-padding;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding: $tablet-padding $tablet-padding 0 $tablet-padding;
+
+    .locationTab {
+      .formWrapper {
+        margin: 0;
+
+        .locationForm {
+          text-align: right;
+
+          .pickUpPointWrapper {
+            margin-top: 8px;
+          }
+        }
+      }
+
+      .title {
+        margin-left: 0;
+        margin-top: $tablet-padding;
+      }
+
+      .mapWrapper {
+        margin-left: 0;
+        margin-right: 0;
+        height: 50vh;
+      }
+    }
+
+    .orderInfo {
+      text-align: left;
+
+      .actionWrapper {
+        text-align: left;
+        margin-top: $tablet-padding;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .navContainer {
+    display: flex;
+    border-bottom: 1px solid $gray-light;
+    border-top: 1px solid $gray-light;
+    width: 100%;
+
+    .nav {
+      line-height: 32px;
+      text-align: left;
+      margin-left: $tablet-padding;
+
+      .navItemWrapper {
+        margin-left: 16px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      .navArrow {
+        margin-left: 16px;
+      }
+    }
+  }
+
+  .main {
+    flex-direction: row;
+    padding-top: 0;
+
+    .tabWrapper {
+      padding-top: $tablet-padding;
+      flex-grow: 1;
+    }
+
+    .orderInfo {
+      border-left: 1px solid $gray-light;
+      padding: $tablet-padding 0 0 $tablet-padding ;
+
+      .title {
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .content {
+        display: block;
+        text-align: right;
+
+        .itemList {
+          margin-top: $tablet-padding;
+        }
+
+        .price {
+          text-align: left;
+          margin-top: $tablet-padding;
+
+          .title {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .pageContainer {
+    align-items: center;
+
+    .headerWrapper,
+    .main {
+      width: 1376px;
+    }
+
+    .navContainer {
+      text-align: center;
+      justify-content: center;
+
+      .nav {
+        width: 1376px;
+        box-sizing: border-box;
+        margin-left: 0;
+        padding: 0 $desktop-padding;
+      }
+    }
+
+    .main {
+      box-sizing: border-box;
+      padding-left: $desktop-padding;
+      padding-right: $desktop-padding;
+    }
+  }
+}

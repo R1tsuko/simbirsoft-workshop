@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { HashRouter } from 'react-router-dom';
+import { YMaps } from 'react-yandex-maps';
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import '@csstools/normalize.css';
@@ -11,9 +13,13 @@ import './index.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <HashRouter>
+      <Provider store={store}>
+        <YMaps>
+          <App />
+        </YMaps>
+      </Provider>
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

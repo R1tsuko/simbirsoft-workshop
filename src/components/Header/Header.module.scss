@@ -1,0 +1,75 @@
+@import '../../assets/styles/colors.scss';
+@import '../../assets/styles/dimensions.scss';
+@import '../../assets/styles/mixins.scss';
+
+.header {
+  padding: $mobile-padding;
+  box-sizing: border-box;
+  height: $header-height;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+
+    .linkToMain {
+      text-decoration: none;
+      
+      .subject {
+        color: $main-accent;
+        font-weight: 700;
+        font-size: 30px;
+      }
+    }
+  }
+
+  .location {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+
+    .subject {
+      color: $gray-dark;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .locationIcon {
+      margin-right: 7.5px;
+      width: 15px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: $tablet-padding;
+
+    .title {
+      align-items: center;
+
+      .menuButton {
+        display: none;
+      }
+    }
+
+    .location {
+      align-items: center;
+      margin: 0;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    grid-area: header;
+  }
+}
+
+@media (min-width: 1440px) {
+  .header {
+    padding-left: $desktop-padding;
+    padding-right: $desktop-padding;
+  }
+}
