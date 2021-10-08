@@ -1,0 +1,31 @@
+@import '../../../../../assets/styles/colors.scss';
+
+.itemContainer {
+  margin-top: 12px;
+  display: flex;
+  font-weight: 300;
+  font-size: 14px;
+
+  .name {
+    display: flex;
+    align-items: flex-end;
+    margin-right: 10px;
+  }
+
+  .dots {
+    flex-grow: 1;
+    border-bottom: 2px dotted $gray-dark;
+    margin-bottom: 3px;
+  }
+
+  .text {
+    margin-left: 10px;
+    max-width: 120px;
+    text-align: right;
+    color: $gray-dark;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+}

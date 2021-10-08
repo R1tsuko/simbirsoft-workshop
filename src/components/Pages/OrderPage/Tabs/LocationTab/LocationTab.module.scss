@@ -1,0 +1,74 @@
+@import '../../../../../assets/styles/dimensions.scss';
+@import '../../../../../assets/styles/colors.scss';
+
+.locationTab {
+
+  .formWrapper {
+    text-align: right;
+    margin-left: $mobile-padding;
+
+    .locationForm {
+      width: fit-content;
+      text-align: right;
+
+      .pickUpPointWrapper {
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .title {
+    font-size: 14px;
+    font-weight: 300;
+    text-align: left;
+    margin-top: $mobile-padding;
+    margin-left: $mobile-padding;
+  }
+
+  .mapWrapper {
+    margin: 8px $mobile-padding 0 $mobile-padding;
+    box-sizing: border-box;
+    height: 40vh;
+  }
+}
+
+@media (min-width: 768px) {
+  .locationTab {
+    .formWrapper {
+      margin: 0;
+
+      .locationForm {
+        text-align: right;
+
+        .pickUpPointWrapper {
+          margin-top: 8px;
+        }
+      }
+    }
+
+    .title {
+      margin-left: 0;
+      margin-top: $tablet-padding;
+    }
+
+    .mapWrapper {
+      // if width 100% scrollbars on 1px are appeared and i don't know why
+      width: 99.9%;
+      margin-left: 0;
+      margin-right: 0;
+      height: 50vh;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .locationTab {
+    flex-grow: 1;
+    padding-right: $tablet-padding;
+
+    .mapWrapper {
+      max-width: 736px;
+      max-height: 352px;
+    }
+  }
+}

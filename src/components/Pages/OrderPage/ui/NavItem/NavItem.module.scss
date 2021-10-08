@@ -1,0 +1,16 @@
+@import '../../../../../assets/styles/colors.scss';
+
+.navlink {
+  color: $gray-dark;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+
+  &.completed {
+    color: $main-black;
+  }
+
+  &.active {
+    color: $main-accent;
+  }
+}

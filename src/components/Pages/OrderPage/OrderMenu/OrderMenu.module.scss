@@ -1,0 +1,69 @@
+@import '../../../../assets/styles/dimensions.scss';
+@import '../../../../assets/styles/colors.scss';
+
+.orderMenu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  height: calc(100vh - #{$header-height});
+  width: 100%;
+  top: $header-height;
+  right: 0;
+  transform: translateY(calc(100% - 32px));
+  transition: all 0.2s;
+
+  .menuToggler {
+    .icon {
+      margin-top: 3px;
+      stroke: $main-accent;
+    }
+    border: none;
+    border-top: 2px solid $main-accent;
+    border-radius: 20px;
+    background-color: transparent;
+  }
+
+  .content {
+    text-align: left;
+    padding: $mobile-padding;
+    flex-grow: 1;
+
+    .title {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .orderInfoTab {
+      margin-top: $mobile-padding;
+    }
+
+    .price {
+      margin-top: 16px;
+
+      .title {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.openedMenu {
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .orderMenu {
+    padding-left: $tablet-sidebar-width;
+    box-sizing: border-box;
+    background-clip: content-box;
+    box-shadow: transparent;
+  }
+}
+
+@media (min-width: 1024px) {
+  .orderMenu {
+    display: none;
+  }
+}
