@@ -1,0 +1,66 @@
+@import '../../../../../assets/styles/dimensions.scss';
+@import '../../../../../assets/styles/colors.scss';
+
+.tabContainer {
+  .radioGroupContainer {
+    margin: 0 $mobile-padding 0 $mobile-padding;
+    display: flex;
+    justify-content: flex-start;
+    max-width: 100%;
+    flex-wrap: wrap;
+
+    .radioWrapper {
+      display: flex;
+      margin-left: 16px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .carListContainer {
+    box-sizing: border-box;
+    border: 1px solid $gray-light;
+    margin: $mobile-padding $mobile-padding 0 $mobile-padding;
+    overflow-y: scroll;
+    height: calc(100vh - 240px);
+
+    .cardWrapper {
+      height: min-content;
+    }
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .tabContainer {
+    .radioGroupContainer {
+      margin: 0;
+    }
+
+    .carListContainer {
+      display: flex;
+      height: 50vh;
+      flex-wrap: wrap;
+      margin: 48px 0 0 0;
+
+      .cardWrapper {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .tabContainer {
+    .carListContainer {
+      height: auto;
+      max-height: calc(100vh - 232px);
+      max-width: 736px;
+    }
+  }
+}

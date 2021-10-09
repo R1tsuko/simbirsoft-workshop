@@ -29,6 +29,7 @@ const Input = ({ inputId, labelText, placeholder, searchData }) => {
           onBlur={onInputBlur}
           onChange={onInputChange}
           value={inputText}
+          autoComplete="off"
         />
         {isFocused ? (
           <div className={styles.searchItemsContainer}>

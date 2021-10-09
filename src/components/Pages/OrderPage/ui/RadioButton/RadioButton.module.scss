@@ -1,0 +1,36 @@
+@import '../../../../../assets/styles/colors.scss';
+
+.radioContainer {
+  display: inline-flex;
+  align-items: center;
+
+  .radio {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .control {
+    box-sizing: border-box;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid $gray-dark;
+  }
+
+  .label {
+    font-weight: 300;
+    font-size: 14px;
+    color: $gray-dark;
+    margin-left: 8px;
+  }
+
+  &.checked {
+    .control {
+      border: 3px solid $main-accent;
+    }
+    .label {
+      color: $main-black;
+    }
+  }
+}

@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-
+  
   .orderInfo {
     .content {
       display: none;
@@ -31,31 +31,6 @@
 @media (min-width: 768px) {
   .main {
     padding: $tablet-padding $tablet-padding 0 $tablet-padding;
-
-    .locationTab {
-      .formWrapper {
-        margin: 0;
-
-        .locationForm {
-          text-align: right;
-
-          .pickUpPointWrapper {
-            margin-top: 8px;
-          }
-        }
-      }
-
-      .title {
-        margin-left: 0;
-        margin-top: $tablet-padding;
-      }
-
-      .mapWrapper {
-        margin-left: 0;
-        margin-right: 0;
-        height: 50vh;
-      }
-    }
 
     .orderInfo {
       text-align: left;
@@ -99,13 +74,13 @@
     padding-top: 0;
 
     .tabWrapper {
-      padding-top: $tablet-padding;
+      padding: $tablet-padding $tablet-padding 0 0;
       flex-grow: 1;
     }
 
     .orderInfo {
       border-left: 1px solid $gray-light;
-      padding: $tablet-padding 0 0 $tablet-padding ;
+      padding: $tablet-padding 0 0 $tablet-padding;
 
       .title {
         font-size: 18px;

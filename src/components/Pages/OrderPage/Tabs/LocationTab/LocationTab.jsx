@@ -4,9 +4,9 @@ import styles from './LocationTab.module.scss';
 
 const LocationTab = ({ pickUpPointSearchData, citySearchData }) => {
   return (
-    <div className={styles.locationTab}>
-      <div className={styles.formWrapper}>
-        <form className={styles.locationForm}>
+    <div className={styles.tabContainer}>
+      <div className={styles.locationInputsWrapper}>
+        <div className={styles.locationInputsContainer}>
           <div>
             <Input
               inputId="city"
@@ -23,9 +23,11 @@ const LocationTab = ({ pickUpPointSearchData, citySearchData }) => {
               searchData={pickUpPointSearchData}
             />
           </div>
-        </form>
+        </div>
       </div>
+
       <h2 className={styles.title}>Выбрать на карте:</h2>
+
       <div className={styles.mapWrapper}>
         <Map defaultState={{ center: [55.75, 37.57], zoom: 9 }} width="100%" height="100%" />
       </div>
