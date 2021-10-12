@@ -1,24 +1,26 @@
 import classNames from 'classnames';
 import styles from './RadioButton.module.scss';
 
-const RadioButton = ({ labelText, onClick, checked }) => {
+const RadioButton = ({ labelText, onChange, checked, name, value }) => {
   return (
-    <div
-      className={classNames(styles.radioContainer, {
+    <label
+      className={classNames(styles.label, {
         [styles.checked]: checked,
       })}
-      onClick={onClick}
-      role="radio"
-      aria-checked={checked}
-      tabIndex="0"
-      onKeyDown={onClick}
+      htmlFor={labelText}
     >
-      <input className={styles.radio} id={labelText} type="radio" value={checked} />
+      <input
+        className={styles.input}
+        onChange={onChange}
+        id={labelText}
+        type="radio"
+        value={value}
+        checked={checked}
+        name={name}
+      />
       <div className={styles.control} />
-      <label className={styles.label} htmlFor={labelText}>
-        {labelText}
-      </label>
-    </div>
+      {labelText}
+    </label>
   );
 };
 

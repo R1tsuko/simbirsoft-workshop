@@ -2,7 +2,7 @@
 
 .label {
   cursor: pointer;
-  display:flex;
+  display: flex;
   align-items: center;
   font-weight: 300;
   font-size: 14px;
@@ -19,15 +19,27 @@
     box-sizing: border-box;
     width: 12px;
     height: 12px;
-    border-radius: 50%;
     border: 1px solid $gray-dark;
     margin-right: 8px;
+
+    .checkedIcon {
+      display: none;
+    }
   }
 
   &.checked {
     color: $main-black;
+
     .control {
-      border: 3px solid $main-accent;
+      border: 1px solid $main-accent;
+
+      .checkedIcon {
+        display: inline-block;
+        position: relative;
+        bottom: 4px;
+        left: 1px;
+        fill: $main-black;
+      }
     }
   }
 }

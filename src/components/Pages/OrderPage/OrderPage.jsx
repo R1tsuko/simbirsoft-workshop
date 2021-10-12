@@ -11,9 +11,6 @@ import TotalTab from './Tabs/TotalTab/TotalTab';
 import styles from './OrderPage.module.scss';
 import navArrow from '../../../assets/icons/NavArrow.svg';
 
-const citySearchData = ['Ульяновск', 'Самара', 'Сызрань'];
-const pickUpPointSearchData = ['Пункт 1', 'Пункт 2', 'Пункт 3'];
-
 const locationOrderData = [{ name: 'Пункт выдачи', text: 'Ульяновск, Нариманова 42' }];
 const carModelOrderData = [{ name: 'Модель', text: 'Hyndai, i30 N' }];
 const extraOrderData = [
@@ -24,6 +21,8 @@ const extraOrderData = [
 ];
 
 const OrderPage = ({ openMenu }) => {
+  // eslint-disable-next-line no-console
+  console.log('render');
   return (
     <div className={styles.pageContainer}>
       <div className={styles.headerWrapper}>
@@ -52,26 +51,22 @@ const OrderPage = ({ openMenu }) => {
 
       <main className={styles.main}>
         <div className={styles.tabWrapper}>
-          <Switch>
-            <Route path="/order/location">
-              <LocationTab
-                citySearchData={citySearchData}
-                pickUpPointSearchData={pickUpPointSearchData}
-              />
-            </Route>
-
-            <Route path="/order/car">
-              <CarTab />
-            </Route>
-
-            <Route path="/order/extra">
-              <ExtraTab />
-            </Route>
-
-            <Route path="/order/total">
-              <TotalTab />
-            </Route>
-          </Switch>
+          <div className={styles.tabContentWrapper}>
+            <Switch>
+              <Route path="/order/location">
+                <LocationTab />
+              </Route>
+              <Route path="/order/car">
+                <CarTab />
+              </Route>
+              <Route path="/order/extra">
+                <ExtraTab />
+              </Route>
+              <Route path="/order/total">
+                <TotalTab />
+              </Route>
+            </Switch>
+          </div>
         </div>
 
         <section className={styles.orderInfo}>
@@ -91,7 +86,23 @@ const OrderPage = ({ openMenu }) => {
           </div>
 
           <div className={styles.actionWrapper}>
-            <Button text="Выбрать модель" orderPage />
+            <Switch>
+              <Route path="/order/location">
+                <Button text="Выбрать модель" orderPage />
+              </Route>
+
+              <Route path="/order/car">
+                <Button text="Дополнительно" orderPage />
+              </Route>
+
+              <Route path="/order/extra">
+                <Button text="Итого" orderPage />
+              </Route>
+
+              <Route path="/order/total">
+                <Button text="Заказать" orderPage />
+              </Route>
+            </Switch>
           </div>
         </section>
       </main>

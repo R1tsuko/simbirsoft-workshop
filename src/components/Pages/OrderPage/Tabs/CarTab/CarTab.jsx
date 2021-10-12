@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import CarCard from '../../ui/CarCard/CarCard';
 import RadioButton from '../../ui/RadioButton/RadioButton';
 import styles from './CarTab.module.scss';
-import fordMustangImg from '../../../../../assets/images/FordMustang.png';
 
 const carClasses = [
   { id: '0', text: 'Все модели' },
@@ -10,48 +10,54 @@ const carClasses = [
   { id: '2', text: 'Премиум' },
 ];
 
-const carCardsData = [
-  { id: 0, name: 'FordMustang11', price: '10 000 - 32 000 ₽', img: fordMustangImg },
-  { id: 1, name: 'FordMustang22', price: '10 000 - 32 000 ₽', img: fordMustangImg },
-  { id: 2, name: 'FordMustang33', price: '10 000 - 32 000 ₽', img: fordMustangImg },
-  { id: 3, name: 'FordMustang44', price: '10 000 - 32 000 ₽', img: fordMustangImg },
-  { id: 4, name: 'FordMustang55', price: '10 000 - 32 000 ₽', img: fordMustangImg },
-  { id: 5, name: 'FordMustang66', price: '10 000 - 32 000 ₽', img: fordMustangImg },
-  { id: 6, name: 'FordMustang77', price: '10 000 - 32 000 ₽', img: fordMustangImg },
-];
+const allCarsClassId = carClasses[0].id;
 
 const CarTab = () => {
-  const [carClassId, setCarClassId] = useState(carClasses[0].id);
+  const [carClassId, setCarClassId] = useState(allCarsClassId);
   const [carId, setCarId] = useState();
+  const [cars, setCars] = useState(null);
 
   const onRadioClick = (newCarClassId) => () => setCarClassId(newCarClassId);
   const onCarCardClick = (newCarId) => () => setCarId(newCarId);
+
+  useEffect(() => {
+    axios
+      .get('https://api-factory.simbirsoft1.com/api/db/car', {
+        headers: {
+          'X-Api-Factory-Application-Id': '5e25c641099b810b946c5d5b',
+          Authorization: 'Bearer e3363ae80588feb12604c114abc2e159789ad6ab',
+          user_id: '5fdf6a87935d4e0be16a3e31',
+        },
+      })
+      .then((response) => {
+        setCars(response.data.data);
+      });
+  }, []);
 
   return (
     <div className={styles.tabContainer}>
       <div className={styles.radioGroupContainer}>
         {carClasses.map((el) => (
-          <div className={styles.radioWrapper}>
+          <div className={styles.radioWrapper} key={el.id}>
             <RadioButton
               labelText={el.text}
-              onClick={onRadioClick(el.id)}
+              onChange={onRadioClick(el.id)}
               checked={carClassId === el.id}
-              key={el.id}
+              name="carClass"
             />
           </div>
         ))}
       </div>
 
       <div className={styles.carListContainer}>
-        {carCardsData.map((el) => (
-          <div className={styles.cardWrapper}>
+        {cars?.map((el) => (
+          <div className={styles.cardWrapper} key={el.id}>
             <CarCard
-              name={el.name}
-              price={el.price}
-              img={el.img}
+              carName={el.name}
+              price={`${el.priceMin} - ${el.priceMax} ₽`}
+              img={el.thumbnail.path}
               onClick={onCarCardClick(el.id)}
               isSelected={carId === el.id}
-              key={el.id}
             />
           </div>
         ))}

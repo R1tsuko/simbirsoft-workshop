@@ -10,7 +10,6 @@
     flex-wrap: wrap;
 
     .radioWrapper {
-      display: flex;
       margin-left: 16px;
 
       &:first-child {
@@ -60,7 +59,6 @@
     .carListContainer {
       height: auto;
       max-height: calc(100vh - 232px);
-      max-width: 736px;
     }
   }
 }

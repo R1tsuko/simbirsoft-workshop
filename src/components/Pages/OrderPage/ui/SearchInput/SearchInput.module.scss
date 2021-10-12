@@ -1,0 +1,34 @@
+@import '../../../../../assets/styles/colors.scss';
+@import '../../../../../assets/styles/mixins.scss';
+
+.inputContainer {
+  position: relative;
+  display: inline-block;
+
+  .searchItemsContainer {
+    position: absolute;
+    right:0;
+    z-index: 1;
+    background-color: white;
+    border: 1px solid $gray-light;
+    width: 188px;
+    min-height: 20px;
+    max-height: 106px;
+    overflow-y: scroll;
+
+    @include scrollbar
+
+    .searchItem {
+      cursor: pointer;
+      padding: 8px;
+      text-align: left;
+      color: $gray-dark;
+      font-size: 14px;
+      font-weight: 300;
+
+      &:hover {
+        color: $main-accent;
+      }
+    }
+  }
+}

@@ -34,8 +34,8 @@
     align-items: flex-end;
 
     .img {
-      width: 256px;
-      height: 116px;
+      max-width: 256px;
+      max-height: 150px;
     }
   }
 }
