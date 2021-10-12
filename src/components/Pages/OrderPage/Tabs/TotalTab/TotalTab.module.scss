@@ -38,7 +38,7 @@
     }
 
     .imgWrapper {
-      text-align: right;
+      text-align: center;
       margin-top: 16px;
       .img {
         max-width: 256px;
@@ -50,6 +50,7 @@
 @media (min-width: 768px) {
   .tabContainer {
     .carInfoContainer {
+      padding: 0;
       flex-direction: row;
       .imgWrapper {
         flex-grow: 1;

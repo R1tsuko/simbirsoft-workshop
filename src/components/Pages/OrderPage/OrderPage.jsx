@@ -21,8 +21,6 @@ const extraOrderData = [
 ];
 
 const OrderPage = ({ openMenu }) => {
-  // eslint-disable-next-line no-console
-  console.log('render');
   return (
     <div className={styles.pageContainer}>
       <div className={styles.headerWrapper}>
@@ -31,21 +29,25 @@ const OrderPage = ({ openMenu }) => {
 
       <div className={styles.navContainer}>
         <nav className={styles.nav}>
-          <span className={styles.navItemWrapper}>
-            <NavItem className={styles.navItem} to="/order/location" text="Местоположеие" />
-          </span>
-          <img className={styles.navArrow} src={navArrow} alt="arrow" />
-          <span className={styles.navItemWrapper}>
-            <NavItem className={styles.navItem} to="/order/car" text="Модель" />
-          </span>
-          <img className={styles.navArrow} src={navArrow} alt="arrow" />
-          <span className={styles.navItemWrapper}>
-            <NavItem className={styles.navItem} to="/order/extra" text="Дополнительно" />
-          </span>
-          <img className={styles.navArrow} src={navArrow} alt="arrow" />
-          <span className={styles.navItemWrapper}>
-            <NavItem className={styles.navItem} to="/order/total" text="Итого" />
-          </span>
+          <div className={styles.row}>
+            <span className={styles.navItemWrapper}>
+              <NavItem className={styles.navItem} to="/order/location" text="Местоположение" />
+            </span>
+            <img className={styles.navArrow} src={navArrow} alt="arrow" />
+            <span className={styles.navItemWrapper}>
+              <NavItem className={styles.navItem} to="/order/car" text="Модель" />
+            </span>
+            <img className={styles.navArrow} src={navArrow} alt="arrow" />
+          </div>
+          <div className={styles.row}>
+            <span className={styles.navItemWrapper}>
+              <NavItem className={styles.navItem} to="/order/extra" text="Дополнительно" />
+            </span>
+            <img className={styles.navArrow} src={navArrow} alt="arrow" />
+            <span className={styles.navItemWrapper}>
+              <NavItem className={styles.navItem} to="/order/total" text="Итого" />
+            </span>
+          </div>
         </nav>
       </div>
 
