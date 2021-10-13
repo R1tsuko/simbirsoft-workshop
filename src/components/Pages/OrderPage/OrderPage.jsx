@@ -10,10 +10,10 @@ import LocationTab from './Tabs/LocationTab/LocationTab';
 import CarTab from './Tabs/CarTab/CarTab';
 import ExtraTab from './Tabs/ExtraTab/ExtraTab';
 import TotalTab from './Tabs/TotalTab/TotalTab';
-import styles from './OrderPage.module.scss';
-import navArrow from '../../../assets/icons/NavArrow.svg';
 import OrderView from './OrderView/OrderView';
 import ConfirmPopUp from './ConfirmPopUp/ConfirmPopUp';
+import styles from './OrderPage.module.scss';
+import navArrow from '../../../assets/icons/NavArrow.svg';
 
 const locationOrderData = [{ name: 'Пункт выдачи', text: 'Ульяновск, Нариманова 42' }];
 const carModelOrderData = [{ name: 'Модель', text: 'Hyndai, i30 N' }];
