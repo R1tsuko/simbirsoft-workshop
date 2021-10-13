@@ -1,0 +1,41 @@
+@import '../../../../../assets/styles/colors.scss';
+
+.cardContainer {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  border: 1px solid $gray-light;
+  padding: 16px;
+  height: 224px;
+
+  &.selected,
+  &:hover {
+    border: 1px solid $main-accent;
+  }
+
+  .title {
+    color: $main-black;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .price {
+    line-height: 17px;
+    color: $gray-dark;
+    font-size: 14px;
+  }
+
+  .carImgWrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    .img {
+      max-width: 256px;
+      max-height: 150px;
+    }
+  }
+}

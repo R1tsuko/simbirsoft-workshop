@@ -1,0 +1,45 @@
+@import '../../../../../assets/styles/colors.scss';
+
+.label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: 300;
+  font-size: 14px;
+  color: $gray-dark;
+  width: fit-content;
+
+  .input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .control {
+    box-sizing: border-box;
+    width: 12px;
+    height: 12px;
+    border: 1px solid $gray-dark;
+    margin-right: 8px;
+
+    .checkedIcon {
+      display: none;
+    }
+  }
+
+  &.checked {
+    color: $main-black;
+
+    .control {
+      border: 1px solid $main-accent;
+
+      .checkedIcon {
+        display: inline-block;
+        position: relative;
+        bottom: 4px;
+        left: 1px;
+        fill: $main-black;
+      }
+    }
+  }
+}

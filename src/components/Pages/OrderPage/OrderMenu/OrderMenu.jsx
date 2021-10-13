@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 import OrderItems from '../ui/OrderItems/OrderItems';
-import NavItem from '../ui/NavItem/NavItem';
 import styles from './OrderMenu.module.scss';
 
 const OrderMenu = ({ locationOrderData, carModelOrderData, extraOrderData }) => {
@@ -44,19 +43,13 @@ const OrderMenu = ({ locationOrderData, carModelOrderData, extraOrderData }) => 
         <h2 className={styles.title}>Ваш заказ:</h2>
 
         <div className={styles.orderInfoTab}>
-          <NavItem to="/order/location" text="Местоположеие" />
           <OrderItems orderData={locationOrderData} />
         </div>
         <div className={styles.orderInfoTab}>
-          <NavItem to="/order/car" text="Модель" />
           <OrderItems orderData={carModelOrderData} />
         </div>
         <div className={styles.orderInfoTab}>
-          <NavItem to="/order/extra" text="Дополнительно" />
           <OrderItems orderData={extraOrderData} />
-        </div>
-        <div className={styles.orderInfoTab}>
-          <NavItem to="/order/total" text="Итого" />
         </div>
         <div className={styles.price}>
           <span className={styles.title}>Цена: </span>

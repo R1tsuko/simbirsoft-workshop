@@ -1,0 +1,42 @@
+@import '../../../../../assets/styles/colors.scss';
+
+.tabContainer {
+  padding: 0 16px;
+
+  .controlsSection {
+    text-align: left;
+    margin-top: 16px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+    .title {
+      font-size: 14px;
+      font-weight: 300;
+      color: $main-black;
+    }
+    .controlsContainer {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+    }
+    .colorControls {
+      flex-direction: row;
+      column-gap: 16px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .tabContainer {
+    padding: 0;
+    .controlsSection {
+      margin-top: 32px;
+
+      .controlsContainer {
+        margin-top: 16px;
+      }
+    }
+  }
+}

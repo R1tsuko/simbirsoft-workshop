@@ -1,0 +1,51 @@
+@import '../../../../../assets/styles/colors.scss';
+@import '../../../../../assets/styles/mixins.scss';
+
+.react-datepicker {
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: $main-black;
+}
+
+.react-datepicker__header {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(238, 238, 238, 1) 100%);
+}
+
+.react-datepicker__triangle {
+  transform: translate3d(0px, 0px, 0px) !important;
+  left: 139px !important;
+}
+
+.react-datepicker__day,
+.react-datepicker__day-name {
+  width: 22px;
+  line-height: 22px;
+
+  &--selected {
+    background-color: $main-accent;
+
+    &:hover {
+      background-color: $main-accent;
+    }
+  }
+}
+.react-datepicker__day,
+.react-datepicker__time-list-item {
+  &--selected,
+  &--keyboard-selected {
+    background-color: $main-accent !important;
+
+    &:hover {
+      background-color: $main-accent !important;
+    }
+  }
+}
+
+.react-datepicker__time-list-item {
+  height: 18px !important;
+}
+
+.react-datepicker__time-list {
+  @include scrollbar;
+}

@@ -2,14 +2,37 @@
 @import '../../../assets/styles/colors.scss';
 
 .pageContainer {
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
 .navContainer {
-  display: none;
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+
+  .nav {
+    line-height: 32px;
+    text-align: left;
+    padding: 0 $mobile-padding;
+    border: 1px solid $gray-light;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: none;
+
+    .navItemWrapper {
+      margin-left: 16px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    .navArrow {
+      margin-left: 16px;
+    }
+  }
 }
 
 .main {
@@ -17,7 +40,15 @@
   flex-direction: column;
   flex-grow: 1;
 
+  .tabWrapper {
+    padding-top: 16px;
+    flex-grow: 1;
+  }
+
   .orderInfo {
+    flex-shrink: 0;
+    padding-bottom: 48px;
+
     .content {
       display: none;
     }
@@ -29,36 +60,37 @@
 }
 
 @media (min-width: 768px) {
+  .navContainer {
+    border-top: 1px solid $gray-light;
+    border-bottom: 1px solid $gray-light;
+    .row {
+      display: inline-block;
+    }
+
+    .nav {
+      margin-left: $tablet-padding;
+      border: none;
+      padding: 0;
+
+      .row {
+        margin-left: 16px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
   .main {
     padding: $tablet-padding $tablet-padding 0 $tablet-padding;
 
-    .locationTab {
-      .formWrapper {
-        margin: 0;
-
-        .locationForm {
-          text-align: right;
-
-          .pickUpPointWrapper {
-            margin-top: 8px;
-          }
-        }
-      }
-
-      .title {
-        margin-left: 0;
-        margin-top: $tablet-padding;
-      }
-
-      .mapWrapper {
-        margin-left: 0;
-        margin-right: 0;
-        height: 50vh;
-      }
+    .tabWrapper {
+      padding: 0;
     }
-
     .orderInfo {
       text-align: left;
+      padding-bottom: $tablet-padding + 32px;
 
       .actionWrapper {
         text-align: left;
@@ -69,43 +101,22 @@
 }
 
 @media (min-width: 1024px) {
-  .navContainer {
-    display: flex;
-    border-bottom: 1px solid $gray-light;
-    border-top: 1px solid $gray-light;
-    width: 100%;
-
-    .nav {
-      line-height: 32px;
-      text-align: left;
-      margin-left: $tablet-padding;
-
-      .navItemWrapper {
-        margin-left: 16px;
-
-        &:first-child {
-          margin-left: 0;
-        }
-      }
-
-      .navArrow {
-        margin-left: 16px;
-      }
-    }
-  }
-
   .main {
     flex-direction: row;
     padding-top: 0;
 
     .tabWrapper {
-      padding-top: $tablet-padding;
+      padding: $tablet-padding $tablet-padding 0 0;
       flex-grow: 1;
+
+      .tabContentWrapper {
+        max-width: 736px;
+      }
     }
 
     .orderInfo {
       border-left: 1px solid $gray-light;
-      padding: $tablet-padding 0 0 $tablet-padding ;
+      padding: $tablet-padding 0 0 $tablet-padding;
 
       .title {
         font-size: 18px;

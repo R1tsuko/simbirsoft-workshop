@@ -14,3 +14,16 @@
     filter: brightness(100%);
   }
 }
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: $gray-light;
+
+    &-thumb {
+      background: $gray-dark;
+      height: 30px;
+      border-radius: 5px;
+    }
+  }
+}

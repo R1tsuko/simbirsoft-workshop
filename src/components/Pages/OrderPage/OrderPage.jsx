@@ -11,9 +11,6 @@ import TotalTab from './Tabs/TotalTab/TotalTab';
 import styles from './OrderPage.module.scss';
 import navArrow from '../../../assets/icons/NavArrow.svg';
 
-const citySearchData = ['Ульяновск', 'Самара', 'Сызрань'];
-const pickUpPointSearchData = ['Пункт 1', 'Пункт 2', 'Пункт 3'];
-
 const locationOrderData = [{ name: 'Пункт выдачи', text: 'Ульяновск, Нариманова 42' }];
 const carModelOrderData = [{ name: 'Модель', text: 'Hyndai, i30 N' }];
 const extraOrderData = [
@@ -32,46 +29,46 @@ const OrderPage = ({ openMenu }) => {
 
       <div className={styles.navContainer}>
         <nav className={styles.nav}>
-          <span className={styles.navItemWrapper}>
-            <NavItem className={styles.navItem} to="/order/location" text="Местоположеие" />
-          </span>
-          <img className={styles.navArrow} src={navArrow} alt="arrow" />
-          <span className={styles.navItemWrapper}>
-            <NavItem className={styles.navItem} to="/order/car" text="Модель" />
-          </span>
-          <img className={styles.navArrow} src={navArrow} alt="arrow" />
-          <span className={styles.navItemWrapper}>
-            <NavItem className={styles.navItem} to="/order/extra" text="Дополнительно" />
-          </span>
-          <img className={styles.navArrow} src={navArrow} alt="arrow" />
-          <span className={styles.navItemWrapper}>
-            <NavItem className={styles.navItem} to="/order/total" text="Итого" />
-          </span>
+          <div className={styles.row}>
+            <span className={styles.navItemWrapper}>
+              <NavItem className={styles.navItem} to="/order/location" text="Местоположение" />
+            </span>
+            <img className={styles.navArrow} src={navArrow} alt="arrow" />
+            <span className={styles.navItemWrapper}>
+              <NavItem className={styles.navItem} to="/order/car" text="Модель" />
+            </span>
+            <img className={styles.navArrow} src={navArrow} alt="arrow" />
+          </div>
+          <div className={styles.row}>
+            <span className={styles.navItemWrapper}>
+              <NavItem className={styles.navItem} to="/order/extra" text="Дополнительно" />
+            </span>
+            <img className={styles.navArrow} src={navArrow} alt="arrow" />
+            <span className={styles.navItemWrapper}>
+              <NavItem className={styles.navItem} to="/order/total" text="Итого" />
+            </span>
+          </div>
         </nav>
       </div>
 
       <main className={styles.main}>
         <div className={styles.tabWrapper}>
-          <Switch>
-            <Route path="/order/location">
-              <LocationTab
-                citySearchData={citySearchData}
-                pickUpPointSearchData={pickUpPointSearchData}
-              />
-            </Route>
-
-            <Route path="/order/car">
-              <CarTab />
-            </Route>
-
-            <Route path="/order/extra">
-              <ExtraTab />
-            </Route>
-
-            <Route path="/order/total">
-              <TotalTab />
-            </Route>
-          </Switch>
+          <div className={styles.tabContentWrapper}>
+            <Switch>
+              <Route path="/order/location">
+                <LocationTab />
+              </Route>
+              <Route path="/order/car">
+                <CarTab />
+              </Route>
+              <Route path="/order/extra">
+                <ExtraTab />
+              </Route>
+              <Route path="/order/total">
+                <TotalTab />
+              </Route>
+            </Switch>
+          </div>
         </div>
 
         <section className={styles.orderInfo}>
@@ -91,7 +88,23 @@ const OrderPage = ({ openMenu }) => {
           </div>
 
           <div className={styles.actionWrapper}>
-            <Button text="Выбрать модель" orderPage />
+            <Switch>
+              <Route path="/order/location">
+                <Button text="Выбрать модель" orderPage />
+              </Route>
+
+              <Route path="/order/car">
+                <Button text="Дополнительно" orderPage />
+              </Route>
+
+              <Route path="/order/extra">
+                <Button text="Итого" orderPage />
+              </Route>
+
+              <Route path="/order/total">
+                <Button text="Заказать" orderPage />
+              </Route>
+            </Switch>
           </div>
         </section>
       </main>

@@ -1,15 +1,13 @@
 @import '../../../../../assets/styles/dimensions.scss';
 @import '../../../../../assets/styles/colors.scss';
 
-.locationTab {
-
-  .formWrapper {
-    text-align: right;
+.tabContainer {
+  .locationInputsWrapper {
     margin-left: $mobile-padding;
 
-    .locationForm {
-      width: fit-content;
+    .locationInputsContainer {
       text-align: right;
+      width: fit-content;
 
       .pickUpPointWrapper {
         margin-top: 8px;
@@ -28,18 +26,16 @@
   .mapWrapper {
     margin: 8px $mobile-padding 0 $mobile-padding;
     box-sizing: border-box;
-    height: 40vh;
+    height: calc(100vh - 386px);
   }
 }
 
 @media (min-width: 768px) {
-  .locationTab {
-    .formWrapper {
+  .tabContainer {
+    .locationInputsWrapper {
       margin: 0;
 
-      .locationForm {
-        text-align: right;
-
+      .locationInputsContainer {
         .pickUpPointWrapper {
           margin-top: 8px;
         }
@@ -56,18 +52,16 @@
       width: 99.9%;
       margin-left: 0;
       margin-right: 0;
-      height: 50vh;
+      height: 46vh;
     }
   }
 }
 
 @media (min-width: 1024px) {
-  .locationTab {
+  .tabContainer {
     flex-grow: 1;
-    padding-right: $tablet-padding;
 
     .mapWrapper {
-      max-width: 736px;
       max-height: 352px;
     }
   }

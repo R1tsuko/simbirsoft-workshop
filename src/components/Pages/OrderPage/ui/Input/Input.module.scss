@@ -1,0 +1,29 @@
+@import '../../../../../assets/styles/colors.scss';
+
+.label {
+  font-weight: 300;
+  font-size: 14px;
+
+  .input {
+    width: 188px;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid $gray-dark;
+    padding: 1px 8px;
+    outline: none;
+    margin-left: 8px;
+
+    &:focus {
+      margin-bottom: -1px;
+      border-bottom: 2px solid $main-accent;
+    }
+
+    &::-webkit-search-cancel-button {
+      appearance: none;
+      cursor:pointer;
+      width: 8px;
+      height: 8px;
+      background-image: url('../../../../../assets/icons/InputClear.svg');
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import '../../../../../assets/styles/colors.scss';
+
+.label {
+  cursor: pointer;
+  display:flex;
+  align-items: center;
+  font-weight: 300;
+  font-size: 14px;
+  color: $gray-dark;
+  width: fit-content;
+
+  .input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .control {
+    box-sizing: border-box;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid $gray-dark;
+    margin-right: 8px;
+  }
+
+  &.checked {
+    color: $main-black;
+    .control {
+      border: 3px solid $main-accent;
+    }
+  }
+}
