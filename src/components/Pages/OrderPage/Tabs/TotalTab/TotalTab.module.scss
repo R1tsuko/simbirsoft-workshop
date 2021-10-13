@@ -1,60 +1,9 @@
-@import '../../../../../assets/styles/colors.scss';
-
-.tabContainer {
-  .carInfoContainer {
-    padding: 0 16px;
-    display: flex;
-    flex-direction: column;
-
-    .text {
-      text-align: left;
-      .name {
-        font-size: 18px;
-      }
-
-      .number {
-        box-sizing: border-box;
-        font-size: 14px;
-        padding: 5px;
-        border: 1px solid $gray-dark;
-        border-radius: 4px;
-        width: fit-content;
-        margin-top: 8px;
-      }
-
-      .tank,
-      .access {
-        font-size: 14px;
-        line-height: 16px;
-        margin-top: 8px;
-
-        .title {
-          font-weight: bold;
-        }
-        .subject {
-          font-weight: light;
-        }
-      }
-    }
-
-    .imgWrapper {
-      text-align: center;
-      margin-top: 16px;
-      .img {
-        max-width: 256px;
-      }
-    }
-  }
+.carInfoWrapper {
+  padding: 0 16px;
 }
 
 @media (min-width: 768px) {
-  .tabContainer {
-    .carInfoContainer {
-      padding: 0;
-      flex-direction: row;
-      .imgWrapper {
-        flex-grow: 1;
-      }
-    }
+  .carInfoWrapper {
+    padding: 0;
   }
 }

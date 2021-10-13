@@ -12,6 +12,10 @@
   @include button-states;
 }
 
+.canceling {
+  background: linear-gradient(90deg, #493013 0%, #7b0c3b 100%);
+}
+
 @media (min-width: 768px) {
   .action {
     width: 250px;
@@ -19,7 +23,7 @@
     border-radius: 8px;
 
     &.orderPage {
-      width:287px;
+      width: 287px;
     }
   }
 }

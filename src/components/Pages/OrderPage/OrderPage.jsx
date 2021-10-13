@@ -1,4 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
+import classNames from 'classnames';
 import Header from '../../Header/Header';
 import Button from '../../commonUi/Button/Button';
 import OrderMenu from './OrderMenu/OrderMenu';
@@ -10,6 +11,7 @@ import ExtraTab from './Tabs/ExtraTab/ExtraTab';
 import TotalTab from './Tabs/TotalTab/TotalTab';
 import styles from './OrderPage.module.scss';
 import navArrow from '../../../assets/icons/NavArrow.svg';
+import OrderView from './OrderView/OrderView';
 
 const locationOrderData = [{ name: 'Пункт выдачи', text: 'Ульяновск, Нариманова 42' }];
 const carModelOrderData = [{ name: 'Модель', text: 'Hyndai, i30 N' }];
@@ -28,27 +30,38 @@ const OrderPage = ({ openMenu }) => {
       </div>
 
       <div className={styles.navContainer}>
-        <nav className={styles.nav}>
-          <div className={styles.row}>
-            <span className={styles.navItemWrapper}>
-              <NavItem className={styles.navItem} to="/order/location" text="Местоположение" />
-            </span>
-            <img className={styles.navArrow} src={navArrow} alt="arrow" />
-            <span className={styles.navItemWrapper}>
-              <NavItem className={styles.navItem} to="/order/car" text="Модель" />
-            </span>
-            <img className={styles.navArrow} src={navArrow} alt="arrow" />
-          </div>
-          <div className={styles.row}>
-            <span className={styles.navItemWrapper}>
-              <NavItem className={styles.navItem} to="/order/extra" text="Дополнительно" />
-            </span>
-            <img className={styles.navArrow} src={navArrow} alt="arrow" />
-            <span className={styles.navItemWrapper}>
-              <NavItem className={styles.navItem} to="/order/total" text="Итого" />
-            </span>
-          </div>
-        </nav>
+        <Switch>
+          <Route path="/order/view">
+            <div className={styles.topPageRow}>
+              <div className={classNames(styles.row, styles.orderViewRow)}>Заказ номер</div>{' '}
+              <div className={classNames(styles.row, styles.orderViewRow)}>RU58491823</div>
+            </div>
+          </Route>
+
+          <Route path="/order">
+            <nav className={styles.topPageRow}>
+              <div className={styles.row}>
+                <span className={styles.navItemWrapper}>
+                  <NavItem className={styles.navItem} to="/order/location" text="Местоположение" />
+                </span>
+                <img className={styles.navArrow} src={navArrow} alt="arrow" />
+                <span className={styles.navItemWrapper}>
+                  <NavItem className={styles.navItem} to="/order/car" text="Модель" />
+                </span>
+                <img className={styles.navArrow} src={navArrow} alt="arrow" />
+              </div>
+              <div className={styles.row}>
+                <span className={styles.navItemWrapper}>
+                  <NavItem className={styles.navItem} to="/order/extra" text="Дополнительно" />
+                </span>
+                <img className={styles.navArrow} src={navArrow} alt="arrow" />
+                <span className={styles.navItemWrapper}>
+                  <NavItem className={styles.navItem} to="/order/total" text="Итого" />
+                </span>
+              </div>
+            </nav>
+          </Route>
+        </Switch>
       </div>
 
       <main className={styles.main}>
@@ -66,6 +79,9 @@ const OrderPage = ({ openMenu }) => {
               </Route>
               <Route path="/order/total">
                 <TotalTab />
+              </Route>
+              <Route path="/order/view">
+                <OrderView />
               </Route>
             </Switch>
           </div>
@@ -90,19 +106,23 @@ const OrderPage = ({ openMenu }) => {
           <div className={styles.actionWrapper}>
             <Switch>
               <Route path="/order/location">
-                <Button text="Выбрать модель" orderPage />
+                <Button text="Выбрать модель" linkTo="/order/car" orderPage />
               </Route>
 
               <Route path="/order/car">
-                <Button text="Дополнительно" orderPage />
+                <Button text="Дополнительно" linkTo="/order/extra" orderPage />
               </Route>
 
               <Route path="/order/extra">
-                <Button text="Итого" orderPage />
+                <Button text="Итого" linkTo="/order/total" orderPage />
               </Route>
 
               <Route path="/order/total">
-                <Button text="Заказать" orderPage />
+                <Button text="Заказать" linkTo="/order/view" orderPage />
+              </Route>
+
+              <Route path="/order/view">
+                <Button text="Отменить" linkTo="/" orderPage canceling />
               </Route>
             </Switch>
           </div>
