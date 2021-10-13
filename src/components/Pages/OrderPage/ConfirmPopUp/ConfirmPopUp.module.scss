@@ -1,0 +1,39 @@
+.popUpContainer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+
+  .content {
+    .title {
+      font-size: 24px;
+      font-weight: normal;
+    }
+
+    .confirmWrapper,
+    .cancelWrapper {
+      margin-top: 16px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .popUpContainer {
+    .content {
+  
+      .confirmWrapper,
+      .cancelWrapper {
+        display: inline-block;
+      }
+
+      .cancelWrapper{
+        margin-left: 16px;
+      }
+    }
+  }
+}

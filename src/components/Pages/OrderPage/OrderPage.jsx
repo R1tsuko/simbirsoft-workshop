@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import classNames from 'classnames';
 import Header from '../../Header/Header';
@@ -12,6 +13,7 @@ import TotalTab from './Tabs/TotalTab/TotalTab';
 import styles from './OrderPage.module.scss';
 import navArrow from '../../../assets/icons/NavArrow.svg';
 import OrderView from './OrderView/OrderView';
+import ConfirmPopUp from './ConfirmPopUp/ConfirmPopUp';
 
 const locationOrderData = [{ name: 'Пункт выдачи', text: 'Ульяновск, Нариманова 42' }];
 const carModelOrderData = [{ name: 'Модель', text: 'Hyndai, i30 N' }];
@@ -23,12 +25,15 @@ const extraOrderData = [
 ];
 
 const OrderPage = ({ openMenu }) => {
+  const [IsConfirmPopupActive, setIsConfirmPopupActive] = useState(false);
+
+  const onConfirmPopupClick = () => setIsConfirmPopupActive(false);
+  const onTotalTabSubmit = () => setIsConfirmPopupActive(true);
   return (
     <div className={styles.pageContainer}>
       <div className={styles.headerWrapper}>
         <Header openMenu={openMenu} />
       </div>
-
       <div className={styles.navContainer}>
         <Switch>
           <Route path="/order/view">
@@ -63,7 +68,6 @@ const OrderPage = ({ openMenu }) => {
           </Route>
         </Switch>
       </div>
-
       <main className={styles.main}>
         <div className={styles.tabWrapper}>
           <div className={styles.tabContentWrapper}>
@@ -106,34 +110,51 @@ const OrderPage = ({ openMenu }) => {
           <div className={styles.actionWrapper}>
             <Switch>
               <Route path="/order/location">
-                <Button text="Выбрать модель" linkTo="/order/car" orderPage />
+                <Button
+                  text="Выбрать модель"
+                  linkTo="/order/car"
+                  width="287px"
+                  expandOnSmallScreen
+                />
               </Route>
 
               <Route path="/order/car">
-                <Button text="Дополнительно" linkTo="/order/extra" orderPage />
+                <Button
+                  text="Дополнительно"
+                  linkTo="/order/extra"
+                  width="287px"
+                  expandOnSmallScreen
+                />
               </Route>
 
               <Route path="/order/extra">
-                <Button text="Итого" linkTo="/order/total" orderPage />
+                <Button text="Итого" linkTo="/order/total" width="287px" expandOnSmallScreen />
               </Route>
 
               <Route path="/order/total">
-                <Button text="Заказать" linkTo="/order/view" orderPage />
+                <Button
+                  text="Заказать"
+                  onClick={onTotalTabSubmit}
+                  width="287px"
+                  expandOnSmallScreen
+                />
               </Route>
 
               <Route path="/order/view">
-                <Button text="Отменить" linkTo="/" orderPage canceling />
+                <Button text="Отменить" linkTo="/" width="287px" canceling expandOnSmallScreen />
               </Route>
             </Switch>
           </div>
         </section>
       </main>
-
       <OrderMenu
         locationOrderData={locationOrderData}
         carModelOrderData={carModelOrderData}
         extraOrderData={extraOrderData}
       />
+      {IsConfirmPopupActive ? (
+        <ConfirmPopUp onCancelClick={onConfirmPopupClick} onConfirmClick={onConfirmPopupClick} />
+      ) : null}
     </div>
   );
 };
