@@ -12,7 +12,7 @@
   display: flex;
   width: 100%;
 
-  .nav {
+  .topPageRow {
     line-height: 32px;
     text-align: left;
     padding: 0 $mobile-padding;
@@ -32,6 +32,10 @@
     .navArrow {
       margin-left: 16px;
     }
+  }
+
+  .orderViewRow {
+    font-weight: bold;
   }
 }
 
@@ -63,21 +67,23 @@
   .navContainer {
     border-top: 1px solid $gray-light;
     border-bottom: 1px solid $gray-light;
-    .row {
-      display: inline-block;
-    }
 
-    .nav {
+    .topPageRow {
       margin-left: $tablet-padding;
       border: none;
       padding: 0;
 
       .row {
         margin-left: 16px;
+        display: inline-block;
 
         &:first-child {
           margin-left: 0;
         }
+      }
+      .orderViewRow {
+        font-size: 14px;
+        margin-left: 0;
       }
     }
   }
@@ -157,7 +163,7 @@
       text-align: center;
       justify-content: center;
 
-      .nav {
+      .topPageRow {
         width: 1376px;
         box-sizing: border-box;
         margin-left: 0;

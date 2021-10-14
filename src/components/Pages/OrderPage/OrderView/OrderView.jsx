@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import CarInfo from '../../ui/CarInfo/CarInfo';
-import styles from './TotalTab.module.scss';
+import CarInfo from '../ui/CarInfo/CarInfo';
+import styles from './OrderView.module.scss';
 
-const TotalTab = () => {
+const OrderView = () => {
   const [car, setCar] = useState(null);
 
   useEffect(() => {
@@ -21,12 +21,13 @@ const TotalTab = () => {
   }, []);
 
   return (
-    <div className={styles.tabContainer}>
+    <section className={styles.container}>
+      <h2 className={styles.title}>Ваш заказ подтверждён</h2>
       <div className={styles.carInfoWrapper}>
         <CarInfo name={car?.name} number={car?.number} tank={car?.tank} img={car?.thumbnail.path} />
       </div>
-    </div>
+    </section>
   );
 };
 
-export default TotalTab;
+export default OrderView;

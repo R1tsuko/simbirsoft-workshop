@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import Header from '../../Header/Header';
 import Carousel from '../../Carousel/Carousel';
 import styles from './MainPage.module.scss';
@@ -14,11 +13,14 @@ const MainPage = ({ openMenu }) => {
           <h1 className={styles.title}>Каршеринг</h1>
           <p className={styles.subtitle}>Need for drive</p>
           <p className={styles.text}>Поминутная аренда авто твоего города</p>
-          <Link to="/order/location">
-            <div className={styles.actionWrapper}>
-              <Button text="Забронировать" />
-            </div>
-          </Link>
+          <div className={styles.actionWrapper}>
+            <Button
+              text="Забронировать"
+              linkTo="/order/location"
+              width="250px"
+              expandOnSmallScreen
+            />
+          </div>
         </section>
       </main>
 
