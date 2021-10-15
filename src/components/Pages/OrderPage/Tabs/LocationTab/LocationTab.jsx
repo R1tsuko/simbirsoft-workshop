@@ -1,37 +1,44 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Map } from 'react-yandex-maps';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import {
+  getCities,
+  getPoints,
+  pickCity,
+  pickPoint,
+  selectCities,
+  selectPickedCity,
+  selectPickedPoint,
+  selectPoints,
+} from '../../../../../store/slices/orderSlice';
 import SearchInput from '../../ui/SearchInput/SearchInput';
+import YandexMap from '../../YandexMap/YandexMap';
 import styles from './LocationTab.module.scss';
 
 const LocationTab = () => {
-  const [cities, setCuties] = useState(null);
-  const [points, setPoints] = useState(null);
+  const cities = useSelector(selectCities);
+  const points = useSelector(selectPoints);
+  const dispatch = useDispatch();
+  const pickedCity = useSelector(selectPickedCity);
+  const pickedPoint = useSelector(selectPickedPoint);
+
+  const citiesSearchData = cities.map((el) => el.name);
+  const pointsSearchData = (
+    pickedCity ? points.filter((el) => el.cityId.id === pickedCity.id) : points
+  ).map((el) => el.address);
 
   useEffect(() => {
-    axios
-      .get('https://api-factory.simbirsoft1.com/api/db/city', {
-        headers: {
-          'X-Api-Factory-Application-Id': '5e25c641099b810b946c5d5b',
-          Authorization: 'Bearer e3363ae80588feb12604c114abc2e159789ad6ab',
-          user_id: '5fdf6a87935d4e0be16a3e31',
-        },
-      })
-      .then((response) => {
-        setCuties(response.data.data.map((el) => el.name));
-      });
-    axios
-      .get('https://api-factory.simbirsoft1.com/api/db/point', {
-        headers: {
-          'X-Api-Factory-Application-Id': '5e25c641099b810b946c5d5b',
-          Authorization: 'Bearer e3363ae80588feb12604c114abc2e159789ad6ab',
-          user_id: '5fdf6a87935d4e0be16a3e31',
-        },
-      })
-      .then((response) => {
-        setPoints(response.data.data.map((el) => el.address));
-      });
+    dispatch(getCities());
+    dispatch(getPoints());
   }, []);
+
+  const onCityFinishSearch = (searchText) => {
+    dispatch(pickCity(cities.find((el) => el.name === searchText)?.id));
+  };
+
+  const onPointFinishSearch = (searchText) => {
+    dispatch(pickPoint(points.find((el) => el.address === searchText)?.id));
+  };
 
   return (
     <div className={styles.tabContainer}>
@@ -39,18 +46,20 @@ const LocationTab = () => {
         <div className={styles.locationInputsContainer}>
           <div>
             <SearchInput
-              inputId="city"
               labelText="Город"
               placeholder="Начните вводить город..."
-              searchData={cities}
+              searchData={citiesSearchData}
+              outerValue={pickedCity?.name}
+              onFinishSearch={onCityFinishSearch}
             />
           </div>
           <div className={styles.pickUpPointWrapper}>
             <SearchInput
-              inputId="pick-up-point"
               labelText="Пункт выдачи"
               placeholder="Начните вводить пункт..."
-              searchData={points}
+              searchData={pointsSearchData}
+              outerValue={pickedPoint?.address}
+              onFinishSearch={onPointFinishSearch}
             />
           </div>
         </div>
@@ -59,7 +68,7 @@ const LocationTab = () => {
       <h2 className={styles.title}>Выбрать на карте:</h2>
 
       <div className={styles.mapWrapper}>
-        <Map defaultState={{ center: [55.75, 37.57], zoom: 9 }} width="100%" height="100%" />
+        <YandexMap />
       </div>
     </div>
   );

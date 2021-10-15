@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
-import { YMaps } from 'react-yandex-maps';
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import '@csstools/normalize.css';
@@ -15,9 +14,7 @@ ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
       <Provider store={store}>
-        <YMaps>
-          <App />
-        </YMaps>
+        <App />
       </Provider>
     </HashRouter>
   </React.StrictMode>,

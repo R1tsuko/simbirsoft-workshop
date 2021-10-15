@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import Header from '../../Header/Header';
 import Button from '../../commonUi/Button/Button';
@@ -14,6 +15,7 @@ import OrderView from './OrderView/OrderView';
 import ConfirmPopUp from './ConfirmPopUp/ConfirmPopUp';
 import styles from './OrderPage.module.scss';
 import navArrow from '../../../assets/icons/NavArrow.svg';
+import { selectCompletedSteps } from '../../../store/slices/orderSlice';
 
 const locationOrderData = [{ name: 'Пункт выдачи', text: 'Ульяновск, Нариманова 42' }];
 const carModelOrderData = [{ name: 'Модель', text: 'Hyndai, i30 N' }];
@@ -26,6 +28,7 @@ const extraOrderData = [
 
 const OrderPage = ({ openMenu }) => {
   const [IsConfirmPopupActive, setIsConfirmPopupActive] = useState(false);
+  const completedSteps = useSelector(selectCompletedSteps);
 
   const onConfirmPopupClick = () => setIsConfirmPopupActive(false);
   const onTotalTabSubmit = () => setIsConfirmPopupActive(true);
@@ -47,11 +50,21 @@ const OrderPage = ({ openMenu }) => {
             <nav className={styles.topPageRow}>
               <div className={styles.row}>
                 <span className={styles.navItemWrapper}>
-                  <NavItem className={styles.navItem} to="/order/location" text="Местоположение" />
+                  <NavItem
+                    className={styles.navItem}
+                    to="/order/location"
+                    text="Местоположение"
+                    accessible
+                  />
                 </span>
                 <img className={styles.navArrow} src={navArrow} alt="arrow" />
                 <span className={styles.navItemWrapper}>
-                  <NavItem className={styles.navItem} to="/order/car" text="Модель" />
+                  <NavItem
+                    className={styles.navItem}
+                    to="/order/car"
+                    text="Модель"
+                    accessible={completedSteps.location}
+                  />
                 </span>
                 <img className={styles.navArrow} src={navArrow} alt="arrow" />
               </div>
@@ -115,6 +128,7 @@ const OrderPage = ({ openMenu }) => {
                   linkTo="/order/car"
                   width="287px"
                   expandOnSmallScreen
+                  disabled={!completedSteps.location}
                 />
               </Route>
 
