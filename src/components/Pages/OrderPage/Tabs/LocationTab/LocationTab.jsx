@@ -1,16 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import {
-  getCities,
-  getPoints,
+  getLocationData,
   pickCity,
   pickPoint,
   selectCities,
   selectPickedCity,
   selectPickedPoint,
   selectPoints,
-} from '../../../../../store/slices/orderSlice';
+} from '../../../../../store/slices/locationSlice';
 import SearchInput from '../../ui/SearchInput/SearchInput';
 import YandexMap from '../../YandexMap/YandexMap';
 import styles from './LocationTab.module.scss';
@@ -28,8 +26,7 @@ const LocationTab = () => {
   ).map((el) => el.address);
 
   useEffect(() => {
-    dispatch(getCities());
-    dispatch(getPoints());
+    dispatch(getLocationData());
   }, []);
 
   const onCityFinishSearch = (searchText) => {

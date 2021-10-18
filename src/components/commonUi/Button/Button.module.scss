@@ -13,6 +13,8 @@
   @include button-states;
 
   &:disabled {
+    cursor: default;
+
     .link {
       display: none;
     }

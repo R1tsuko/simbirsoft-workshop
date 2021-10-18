@@ -6,9 +6,21 @@ const instance = axios.create({
 });
 
 export const fetchPoints = async () => {
-  return instance.get('point');
+  const response = await instance.get('point');
+  return response.data.data;
 };
 
 export const fetchCities = async () => {
-  return instance.get('city');
+  const response = await instance.get('city');
+  return response.data.data;
+};
+
+export const fetchCarCategories = async () => {
+  const response = await instance.get('category');
+  return response.data.data;
+};
+
+export const fetchCars = async () => {
+  const response = await instance.get('car');
+  return response.data.data;
 };

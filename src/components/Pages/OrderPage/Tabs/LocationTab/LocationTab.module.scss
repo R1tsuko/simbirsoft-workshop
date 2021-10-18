@@ -1,6 +1,13 @@
 @import '../../../../../assets/styles/dimensions.scss';
 @import '../../../../../assets/styles/colors.scss';
 
+.fetching {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
 .tabContainer {
   .locationInputsWrapper {
     margin-left: $mobile-padding;
@@ -52,7 +59,7 @@
       width: 99.9%;
       margin-left: 0;
       margin-right: 0;
-      height: 46vh;
+      height: 40vh;
     }
   }
 }

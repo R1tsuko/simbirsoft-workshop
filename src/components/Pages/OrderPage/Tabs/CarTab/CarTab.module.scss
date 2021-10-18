@@ -9,13 +9,7 @@
     max-width: 100%;
     flex-wrap: wrap;
 
-    .radioWrapper {
-      margin-left: 16px;
-
-      &:first-child {
-        margin-left: 0;
-      }
-    }
+    gap: 10px 16px;
   }
 
   .carListContainer {
@@ -23,7 +17,7 @@
     border: 1px solid $gray-light;
     margin: $mobile-padding $mobile-padding 0 $mobile-padding;
     overflow-y: scroll;
-    height: calc(100vh - 330px);
+    height: calc(100vh - 375px);
 
     .cardWrapper {
       height: min-content;
@@ -43,7 +37,7 @@
 
     .carListContainer {
       display: flex;
-      height: 50vh;
+      height: 44vh;
       flex-wrap: wrap;
       margin: 48px 0 0 0;
 
@@ -58,7 +52,17 @@
   .tabContainer {
     .carListContainer {
       height: auto;
+      max-height: calc(100vh - 260px);
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .tabContainer {
+    .carListContainer {
+      height: auto;
       max-height: calc(100vh - 232px);
     }
   }
 }
+

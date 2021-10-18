@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import orderReducer from './slices/orderSlice';
+import carReducer from './slices/carSlice';
+import locationReducer from './slices/locationSlice';
 
 const store = configureStore({
-  reducer: { order: orderReducer },
+  reducer: { location: locationReducer, car: carReducer },
 });
 
 export default store;

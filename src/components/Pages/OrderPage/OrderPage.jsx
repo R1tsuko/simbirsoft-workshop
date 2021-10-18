@@ -2,6 +2,12 @@ import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
+import {
+  selectCompletedSteps,
+  selectIsCarDataLoaded,
+  selectIsLocationDataLoaded,
+  selectOrderData,
+} from '../../../store/slices/orderSelectors';
 import Header from '../../Header/Header';
 import Button from '../../commonUi/Button/Button';
 import OrderMenu from './OrderMenu/OrderMenu';
@@ -13,27 +19,24 @@ import ExtraTab from './Tabs/ExtraTab/ExtraTab';
 import TotalTab from './Tabs/TotalTab/TotalTab';
 import OrderView from './OrderView/OrderView';
 import ConfirmPopUp from './ConfirmPopUp/ConfirmPopUp';
+import Preloader from './ui/Preloader/Preloader';
 import styles from './OrderPage.module.scss';
 import navArrow from '../../../assets/icons/NavArrow.svg';
-import { selectCompletedSteps } from '../../../store/slices/orderSlice';
-
-const locationOrderData = [{ name: 'Пункт выдачи', text: 'Ульяновск, Нариманова 42' }];
-const carModelOrderData = [{ name: 'Модель', text: 'Hyndai, i30 N' }];
-const extraOrderData = [
-  { name: 'Цвет', text: 'Голубой' },
-  { name: 'Длительность аренды', text: '1д 2ч' },
-  { name: 'Тариф', text: 'На сутки' },
-  { name: 'Полный бак', text: 'да' },
-];
 
 const OrderPage = ({ openMenu }) => {
-  const [IsConfirmPopupActive, setIsConfirmPopupActive] = useState(false);
+  const isLocationDataLoaded = useSelector(selectIsLocationDataLoaded);
+  const isCarDataLoaded = useSelector(selectIsCarDataLoaded);
   const completedSteps = useSelector(selectCompletedSteps);
+  const orderData = useSelector(selectOrderData);
+  const [IsConfirmPopupActive, setIsConfirmPopupActive] = useState(false);
 
   const onConfirmPopupClick = () => setIsConfirmPopupActive(false);
   const onTotalTabSubmit = () => setIsConfirmPopupActive(true);
   return (
     <div className={styles.pageContainer}>
+      <Route path="/order/location">{isLocationDataLoaded ? null : <Preloader />}</Route>
+      <Route path="/order/car">{isCarDataLoaded ? null : <Preloader />}</Route>
+
       <div className={styles.headerWrapper}>
         <Header openMenu={openMenu} />
       </div>
@@ -109,9 +112,9 @@ const OrderPage = ({ openMenu }) => {
             <h2 className={styles.title}>Ваш заказ:</h2>
 
             <div className={styles.itemList}>
-              <OrderItems orderData={locationOrderData} />
-              <OrderItems orderData={carModelOrderData} />
-              <OrderItems orderData={extraOrderData} />
+              <OrderItems orderData={orderData.locationOrderData} />
+              <OrderItems orderData={orderData.carOrderData} />
+              <OrderItems orderData={[]} />
             </div>
 
             <div className={styles.price}>
@@ -138,6 +141,7 @@ const OrderPage = ({ openMenu }) => {
                   linkTo="/order/extra"
                   width="287px"
                   expandOnSmallScreen
+                  disabled={!completedSteps.car}
                 />
               </Route>
 
@@ -162,9 +166,9 @@ const OrderPage = ({ openMenu }) => {
         </section>
       </main>
       <OrderMenu
-        locationOrderData={locationOrderData}
-        carModelOrderData={carModelOrderData}
-        extraOrderData={extraOrderData}
+        locationOrderData={orderData.locationOrderData}
+        carModelOrderData={orderData.carOrderData}
+        extraOrderData={[]}
       />
       {IsConfirmPopupActive ? (
         <ConfirmPopUp onCancelClick={onConfirmPopupClick} onConfirmClick={onConfirmPopupClick} />
