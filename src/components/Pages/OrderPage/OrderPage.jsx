@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import {
   selectCompletedSteps,
-  selectIsCarDataLoaded,
-  selectIsLocationDataLoaded,
+  selectIsLoading,
   selectOrderData,
 } from '../../../store/slices/orderSelectors';
 import Header from '../../Header/Header';
@@ -24,19 +23,16 @@ import styles from './OrderPage.module.scss';
 import navArrow from '../../../assets/icons/NavArrow.svg';
 
 const OrderPage = ({ openMenu }) => {
-  const isLocationDataLoaded = useSelector(selectIsLocationDataLoaded);
-  const isCarDataLoaded = useSelector(selectIsCarDataLoaded);
   const completedSteps = useSelector(selectCompletedSteps);
   const orderData = useSelector(selectOrderData);
+  const isLoading = useSelector(selectIsLoading);
   const [IsConfirmPopupActive, setIsConfirmPopupActive] = useState(false);
 
   const onConfirmPopupClick = () => setIsConfirmPopupActive(false);
   const onTotalTabSubmit = () => setIsConfirmPopupActive(true);
   return (
     <div className={styles.pageContainer}>
-      <Route path="/order/location">{isLocationDataLoaded ? null : <Preloader />}</Route>
-      <Route path="/order/car">{isCarDataLoaded ? null : <Preloader />}</Route>
-
+      <Preloader isLoading={isLoading} />
       <div className={styles.headerWrapper}>
         <Header openMenu={openMenu} />
       </div>
@@ -73,7 +69,12 @@ const OrderPage = ({ openMenu }) => {
               </div>
               <div className={styles.row}>
                 <span className={styles.navItemWrapper}>
-                  <NavItem className={styles.navItem} to="/order/extra" text="Дополнительно" />
+                  <NavItem
+                    className={styles.navItem}
+                    to="/order/extra"
+                    text="Дополнительно"
+                    accessible={completedSteps.car}
+                  />
                 </span>
                 <img className={styles.navArrow} src={navArrow} alt="arrow" />
                 <span className={styles.navItemWrapper}>
@@ -112,9 +113,7 @@ const OrderPage = ({ openMenu }) => {
             <h2 className={styles.title}>Ваш заказ:</h2>
 
             <div className={styles.itemList}>
-              <OrderItems orderData={orderData.locationOrderData} />
-              <OrderItems orderData={orderData.carOrderData} />
-              <OrderItems orderData={[]} />
+              <OrderItems orderData={orderData} />
             </div>
 
             <div className={styles.price}>
@@ -165,11 +164,7 @@ const OrderPage = ({ openMenu }) => {
           </div>
         </section>
       </main>
-      <OrderMenu
-        locationOrderData={orderData.locationOrderData}
-        carModelOrderData={orderData.carOrderData}
-        extraOrderData={[]}
-      />
+      <OrderMenu orderData={orderData} />
       {IsConfirmPopupActive ? (
         <ConfirmPopUp onCancelClick={onConfirmPopupClick} onConfirmClick={onConfirmPopupClick} />
       ) : null}

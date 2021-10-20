@@ -3,14 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Map, Placemark, YMaps } from 'react-yandex-maps';
 import {
   getLocationDataCoords,
+  pickCity,
   pickPoint,
+  selectCities,
   selectCitiesCoords,
   selectIsLocationDataFetching,
   selectPickedCity,
   selectPickedPoint,
+  selectPoints,
   selectPointsCoords,
 } from '../../../../store/slices/locationSlice';
 import mapIcon from '../../../../assets/icons/MapIcon.svg';
+import { findByField } from '../../../../helpers';
 
 const DEFAULT_ZOOM = 5;
 const CITY_ZOOM = 11;
@@ -20,6 +24,8 @@ const defaultMapState = { center: [55.032286, 51.673704], zoom: DEFAULT_ZOOM };
 const YandexMap = () => {
   const pointsCoords = useSelector(selectPointsCoords);
   const citiesCoords = useSelector(selectCitiesCoords);
+  const points = useSelector(selectPoints);
+  const cities = useSelector(selectCities);
   const isLocationDataFetching = useSelector(selectIsLocationDataFetching);
   const pickedCity = useSelector(selectPickedCity);
   const pickedPoint = useSelector(selectPickedPoint);
@@ -55,7 +61,9 @@ const YandexMap = () => {
     setYmapsApi(ymaps);
   };
   const onPlacemarkClick = (pointId) => () => {
-    dispatch(pickPoint(pointId));
+    const newPoint = findByField(points, 'id', pointId);
+    dispatch(pickPoint(newPoint));
+    dispatch(pickCity(findByField(cities, 'id', newPoint.cityId.id)));
   };
 
   return (

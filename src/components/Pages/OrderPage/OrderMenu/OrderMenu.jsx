@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import OrderItems from '../ui/OrderItems/OrderItems';
 import styles from './OrderMenu.module.scss';
 
-const OrderMenu = ({ locationOrderData, carModelOrderData, extraOrderData }) => {
+const OrderMenu = ({ orderData }) => {
   const [isOpened, setIsMenuOpened] = useState(false);
   const toggleMenu = () => setIsMenuOpened(!isOpened);
 
@@ -43,14 +43,9 @@ const OrderMenu = ({ locationOrderData, carModelOrderData, extraOrderData }) => 
         <h2 className={styles.title}>Ваш заказ:</h2>
 
         <div className={styles.orderInfoTab}>
-          <OrderItems orderData={locationOrderData} />
+          <OrderItems orderData={orderData} />
         </div>
-        <div className={styles.orderInfoTab}>
-          <OrderItems orderData={carModelOrderData} />
-        </div>
-        <div className={styles.orderInfoTab}>
-          <OrderItems orderData={extraOrderData} />
-        </div>
+
         <div className={styles.price}>
           <span className={styles.title}>Цена: </span>
           <span className={styles.value}>16 000 ₽</span>

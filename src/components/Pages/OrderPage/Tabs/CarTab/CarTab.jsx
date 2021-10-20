@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { findByField } from '../../../../../helpers';
 import {
   getCars,
   getCategories,
@@ -25,7 +26,7 @@ const CarTab = () => {
     setCarCategoryId(newCarCategoryId);
     dispatch(pickCar(null));
   };
-  const onCarCardClick = (newCarId) => () => dispatch(pickCar(newCarId));
+  const onCarCardClick = (newCarId) => () => dispatch(pickCar(findByField(cars, 'id', newCarId)));
 
   useEffect(() => {
     dispatch(getCars());
@@ -54,8 +55,8 @@ const CarTab = () => {
 
       <div className={styles.carListContainer}>
         {cars
-          .filter((car) =>
-            carCategoryId === DEFAULT_CATEGORY_ID ? true : car.categoryId?.id === carCategoryId
+          .filter(
+            (car) => carCategoryId === DEFAULT_CATEGORY_ID || car.categoryId?.id === carCategoryId
           )
           .map((el) => (
             <div className={styles.cardWrapper} key={el.id}>

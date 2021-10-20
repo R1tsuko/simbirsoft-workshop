@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { findByField } from '../../../../../helpers';
 import {
   getLocationData,
   pickCity,
@@ -30,11 +31,16 @@ const LocationTab = () => {
   }, []);
 
   const onCityFinishSearch = (searchText) => {
-    dispatch(pickCity(cities.find((el) => el.name === searchText)?.id));
+    dispatch(pickCity(findByField(cities, 'name', searchText)));
+    dispatch(pickPoint(null));
   };
 
   const onPointFinishSearch = (searchText) => {
-    dispatch(pickPoint(points.find((el) => el.address === searchText)?.id));
+    const newPoint = findByField(points, 'address', searchText);
+    dispatch(pickPoint(newPoint));
+    if (newPoint) {
+      dispatch(pickCity(findByField(cities, 'id', newPoint.cityId.id)));
+    }
   };
 
   return (

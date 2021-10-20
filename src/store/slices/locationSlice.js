@@ -10,7 +10,7 @@ const initialState = {
   pickedCity: null,
   pickedPoint: null,
   isLocationDataFetching: false,
-  isLocationDataCoordsFetching: false,
+  isLoading: null,
 };
 
 export const locationSlice = createSlice({
@@ -18,23 +18,14 @@ export const locationSlice = createSlice({
   initialState,
   reducers: {
     pickCity: (state, action) => {
-      const pickedCity = state.cities.find((city) => city.id === action.payload);
-      state.pickedCity = pickedCity;
-      state.pickedPoint = null;
+      state.pickedCity = action.payload;
     },
     pickPoint: (state, action) => {
-      const pickedPoint = state.points.find((point) => point.id === action.payload);
-      state.pickedPoint = pickedPoint;
-      if (pickedPoint) {
-        state.pickedCity = state.cities.find((city) => city.id === pickedPoint.cityId.id);
-      }
+      state.pickedPoint = action.payload;
     },
     setLocationDataCoords: (state, action) => {
       state.citiesCoords = action.payload.citiesCoords;
       state.pointsCoords = action.payload.pointsCoords;
-    },
-    setIsLocationDataCoordsFetching: (state, action) => {
-      state.isLocationDataCoordsFetching = action.payload;
     },
     setLocationData: (state, action) => {
       state.cities = action.payload.cities;
@@ -43,15 +34,14 @@ export const locationSlice = createSlice({
     setIsLocationDataFetching: (state, action) => {
       state.isLocationDataFetching = action.payload;
     },
+    setIsLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
   },
 });
 
-const {
-  setLocationDataCoords,
-  setIsLocationDataCoordsFetching,
-  setLocationData,
-  setIsLocationDataFetching,
-} = locationSlice.actions;
+const { setLocationDataCoords, setIsLoading, setLocationData, setIsLocationDataFetching } =
+  locationSlice.actions;
 export const { pickCity, pickPoint } = locationSlice.actions;
 
 export const selectCities = (state) => state.location.cities;
@@ -61,11 +51,10 @@ export const selectPointsCoords = (state) => state.location.pointsCoords;
 export const selectPickedCity = (state) => state.location.pickedCity;
 export const selectPickedPoint = (state) => state.location.pickedPoint;
 export const selectIsLocationDataFetching = (state) => state.location.isLocationDataFetching;
-export const selectIsLocationDataCoordsFetching = (state) =>
-  state.location.isLocationDataCoordsFetching;
 
 export const getLocationData = () => async (dispatch, getState) => {
   if (getState().location.points.length === 0) {
+    dispatch(setIsLoading(true));
     dispatch(setIsLocationDataFetching(true));
 
     const [points, cities] = await Promise.all([fetchPoints(), fetchCities()]);
@@ -77,7 +66,6 @@ export const getLocationData = () => async (dispatch, getState) => {
 
 export const getLocationDataCoords = (ymaps) => async (dispatch, getState) => {
   if (getState().location.pointsCoords.length === 0) {
-    dispatch(setIsLocationDataCoordsFetching(true));
     const cities = selectCities(getState());
     const points = selectPoints(getState());
 
@@ -96,7 +84,7 @@ export const getLocationDataCoords = (ymaps) => async (dispatch, getState) => {
     }));
 
     dispatch(setLocationDataCoords({ citiesCoords, pointsCoords }));
-    dispatch(setIsLocationDataCoordsFetching(false));
+    dispatch(setIsLoading(false));
   }
 };
 

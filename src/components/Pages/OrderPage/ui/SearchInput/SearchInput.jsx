@@ -44,7 +44,6 @@ const SearchInput = ({ labelText, placeholder, searchData, onFinishSearch, outer
                 className={styles.searchItem}
                 key={el}
                 onMouseDown={onSearchItemClick}
-                eslint-disable-next-line
                 // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
                 role="option"
                 tabIndex={ind + 1}
