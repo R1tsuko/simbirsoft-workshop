@@ -9,7 +9,7 @@ export const selectCompletedSteps = (state) => {
 export const selectOrderData = (state) => {
   const { location, car } = state;
   return [
-    ...(location.pickedPoint
+    ...(location.pickedPoint && location.pickedCity
       ? [
           {
             name: 'Пункт выдачи',
