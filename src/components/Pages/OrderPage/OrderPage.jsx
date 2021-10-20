@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
+import {
+  selectCompletedSteps,
+  selectIsLoading,
+  selectOrderData,
+} from '../../../store/slices/orderSelectors';
 import Header from '../../Header/Header';
 import Button from '../../commonUi/Button/Button';
 import OrderMenu from './OrderMenu/OrderMenu';
@@ -12,25 +18,21 @@ import ExtraTab from './Tabs/ExtraTab/ExtraTab';
 import TotalTab from './Tabs/TotalTab/TotalTab';
 import OrderView from './OrderView/OrderView';
 import ConfirmPopUp from './ConfirmPopUp/ConfirmPopUp';
+import Preloader from './ui/Preloader/Preloader';
 import styles from './OrderPage.module.scss';
 import navArrow from '../../../assets/icons/NavArrow.svg';
 
-const locationOrderData = [{ name: 'Пункт выдачи', text: 'Ульяновск, Нариманова 42' }];
-const carModelOrderData = [{ name: 'Модель', text: 'Hyndai, i30 N' }];
-const extraOrderData = [
-  { name: 'Цвет', text: 'Голубой' },
-  { name: 'Длительность аренды', text: '1д 2ч' },
-  { name: 'Тариф', text: 'На сутки' },
-  { name: 'Полный бак', text: 'да' },
-];
-
 const OrderPage = ({ openMenu }) => {
+  const completedSteps = useSelector(selectCompletedSteps);
+  const orderData = useSelector(selectOrderData);
+  const isLoading = useSelector(selectIsLoading);
   const [IsConfirmPopupActive, setIsConfirmPopupActive] = useState(false);
 
   const onConfirmPopupClick = () => setIsConfirmPopupActive(false);
   const onTotalTabSubmit = () => setIsConfirmPopupActive(true);
   return (
     <div className={styles.pageContainer}>
+      <Preloader isLoading={isLoading} />
       <div className={styles.headerWrapper}>
         <Header openMenu={openMenu} />
       </div>
@@ -47,17 +49,32 @@ const OrderPage = ({ openMenu }) => {
             <nav className={styles.topPageRow}>
               <div className={styles.row}>
                 <span className={styles.navItemWrapper}>
-                  <NavItem className={styles.navItem} to="/order/location" text="Местоположение" />
+                  <NavItem
+                    className={styles.navItem}
+                    to="/order/location"
+                    text="Местоположение"
+                    accessible
+                  />
                 </span>
                 <img className={styles.navArrow} src={navArrow} alt="arrow" />
                 <span className={styles.navItemWrapper}>
-                  <NavItem className={styles.navItem} to="/order/car" text="Модель" />
+                  <NavItem
+                    className={styles.navItem}
+                    to="/order/car"
+                    text="Модель"
+                    accessible={completedSteps.location}
+                  />
                 </span>
                 <img className={styles.navArrow} src={navArrow} alt="arrow" />
               </div>
               <div className={styles.row}>
                 <span className={styles.navItemWrapper}>
-                  <NavItem className={styles.navItem} to="/order/extra" text="Дополнительно" />
+                  <NavItem
+                    className={styles.navItem}
+                    to="/order/extra"
+                    text="Дополнительно"
+                    accessible={completedSteps.car}
+                  />
                 </span>
                 <img className={styles.navArrow} src={navArrow} alt="arrow" />
                 <span className={styles.navItemWrapper}>
@@ -96,9 +113,7 @@ const OrderPage = ({ openMenu }) => {
             <h2 className={styles.title}>Ваш заказ:</h2>
 
             <div className={styles.itemList}>
-              <OrderItems orderData={locationOrderData} />
-              <OrderItems orderData={carModelOrderData} />
-              <OrderItems orderData={extraOrderData} />
+              <OrderItems orderData={orderData} />
             </div>
 
             <div className={styles.price}>
@@ -115,6 +130,7 @@ const OrderPage = ({ openMenu }) => {
                   linkTo="/order/car"
                   width="287px"
                   expandOnSmallScreen
+                  disabled={!completedSteps.location}
                 />
               </Route>
 
@@ -124,6 +140,7 @@ const OrderPage = ({ openMenu }) => {
                   linkTo="/order/extra"
                   width="287px"
                   expandOnSmallScreen
+                  disabled={!completedSteps.car}
                 />
               </Route>
 
@@ -147,11 +164,7 @@ const OrderPage = ({ openMenu }) => {
           </div>
         </section>
       </main>
-      <OrderMenu
-        locationOrderData={locationOrderData}
-        carModelOrderData={carModelOrderData}
-        extraOrderData={extraOrderData}
-      />
+      <OrderMenu orderData={orderData} />
       {IsConfirmPopupActive ? (
         <ConfirmPopUp onCancelClick={onConfirmPopupClick} onConfirmClick={onConfirmPopupClick} />
       ) : null}

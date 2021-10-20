@@ -13,6 +13,7 @@
   right: 0;
   transform: translateY(calc(100% - 32px));
   transition: all 0.2s;
+  z-index: 200;
 
   .menuToggler {
     .icon {

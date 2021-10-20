@@ -1,19 +1,29 @@
-import { useState } from 'react';
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+import { useEffect, useState } from 'react';
 import Input from '../Input/Input';
 import styles from './SearchInput.module.scss';
 
-const SearchInput = ({ labelText, placeholder, searchData }) => {
+const SearchInput = ({ labelText, placeholder, searchData, onFinishSearch, outerValue }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputText, setInputText] = useState('');
 
-  const onInputFocus = () => setIsFocused(true);
-  const onInputBlur = () => setIsFocused(false);
-  const onInputChange = (e) => setInputText(e.target.value);
-
   const checkSearchMatch = (string) => string.toLowerCase().includes(inputText.toLowerCase());
-  const onSearchItemClick = (e) => {
-    setInputText(e.target.childNodes[0].data);
+
+  useEffect(() => {
+    setInputText(outerValue || '');
+  }, [outerValue]);
+
+  const onInputFocus = () => {
+    setIsFocused(true);
+    setInputText('');
   };
+  const onInputBlur = () => {
+    setIsFocused(false);
+    onFinishSearch(inputText);
+  };
+  const onInputChange = (e) => setInputText(e.target.value);
+  const onSearchItemClick = (e) => setInputText(e.target.childNodes[0].data);
 
   return (
     <div className={styles.inputContainer}>
@@ -34,7 +44,6 @@ const SearchInput = ({ labelText, placeholder, searchData }) => {
                 className={styles.searchItem}
                 key={el}
                 onMouseDown={onSearchItemClick}
-                eslint-disable-next-line
                 // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
                 role="option"
                 tabIndex={ind + 1}

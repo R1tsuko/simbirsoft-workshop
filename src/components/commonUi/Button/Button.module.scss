@@ -1,6 +1,7 @@
 @import '../../../assets/styles/mixins.scss';
 
 .action {
+  cursor: pointer;
   position: relative;
   height: 50px;
   border: none;
@@ -10,6 +11,14 @@
   font-size: 18px;
 
   @include button-states;
+
+  &:disabled {
+    cursor: default;
+
+    .link {
+      display: none;
+    }
+  }
 
   .link {
     position: absolute;

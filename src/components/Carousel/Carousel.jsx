@@ -92,6 +92,8 @@ const Carousel = () => {
               type="button"
               aria-label="slide dot"
               onClick={onControlClick(i)}
+              // eslint-disable-next-line react/no-array-index-key
+              key={i}
             />
           ))}
         </div>
