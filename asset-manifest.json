@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/simbirsoft-workshop/static/css/main.c949d791.chunk.css",
-    "main.js": "/simbirsoft-workshop/static/js/main.c856909c.chunk.js",
-    "main.js.map": "/simbirsoft-workshop/static/js/main.c856909c.chunk.js.map",
+    "main.css": "/simbirsoft-workshop/static/css/main.2067b2af.chunk.css",
+    "main.js": "/simbirsoft-workshop/static/js/main.2784be85.chunk.js",
+    "main.js.map": "/simbirsoft-workshop/static/js/main.2784be85.chunk.js.map",
     "runtime-main.js": "/simbirsoft-workshop/static/js/runtime-main.4b5cda29.js",
     "runtime-main.js.map": "/simbirsoft-workshop/static/js/runtime-main.4b5cda29.js.map",
     "static/css/2.ecb52157.chunk.css": "/simbirsoft-workshop/static/css/2.ecb52157.chunk.css",
-    "static/js/2.d3674f68.chunk.js": "/simbirsoft-workshop/static/js/2.d3674f68.chunk.js",
-    "static/js/2.d3674f68.chunk.js.map": "/simbirsoft-workshop/static/js/2.d3674f68.chunk.js.map",
+    "static/js/2.b029faad.chunk.js": "/simbirsoft-workshop/static/js/2.b029faad.chunk.js",
+    "static/js/2.b029faad.chunk.js.map": "/simbirsoft-workshop/static/js/2.b029faad.chunk.js.map",
     "static/js/3.20692d19.chunk.js": "/simbirsoft-workshop/static/js/3.20692d19.chunk.js",
     "static/js/3.20692d19.chunk.js.map": "/simbirsoft-workshop/static/js/3.20692d19.chunk.js.map",
     "index.html": "/simbirsoft-workshop/index.html",
     "static/css/2.ecb52157.chunk.css.map": "/simbirsoft-workshop/static/css/2.ecb52157.chunk.css.map",
-    "static/css/main.c949d791.chunk.css.map": "/simbirsoft-workshop/static/css/main.c949d791.chunk.css.map",
-    "static/js/2.d3674f68.chunk.js.LICENSE.txt": "/simbirsoft-workshop/static/js/2.d3674f68.chunk.js.LICENSE.txt",
+    "static/css/main.2067b2af.chunk.css.map": "/simbirsoft-workshop/static/css/main.2067b2af.chunk.css.map",
+    "static/js/2.b029faad.chunk.js.LICENSE.txt": "/simbirsoft-workshop/static/js/2.b029faad.chunk.js.LICENSE.txt",
     "static/media/ArrowLeft.1752ae91.svg": "/simbirsoft-workshop/static/media/ArrowLeft.1752ae91.svg",
     "static/media/ArrowRight.7591c327.svg": "/simbirsoft-workshop/static/media/ArrowRight.7591c327.svg",
     "static/media/CloseMenu.1d4598cc.svg": "/simbirsoft-workshop/static/media/CloseMenu.1d4598cc.svg",
     "static/media/Input.module.scss": "/simbirsoft-workshop/static/media/InputClear.01609553.svg",
     "static/media/LocationIcon.6d4a93c7.svg": "/simbirsoft-workshop/static/media/LocationIcon.6d4a93c7.svg",
-    "static/media/MapIcon.457e9069.svg": "/simbirsoft-workshop/static/media/MapIcon.457e9069.svg",
+    "static/media/MapIcon.c961018a.svg": "/simbirsoft-workshop/static/media/MapIcon.c961018a.svg",
     "static/media/MenuIconBlack.c006b7cf.svg": "/simbirsoft-workshop/static/media/MenuIconBlack.c006b7cf.svg",
     "static/media/MenuIconWhite.33a03786.svg": "/simbirsoft-workshop/static/media/MenuIconWhite.33a03786.svg",
     "static/media/NavArrow.3f54b55d.svg": "/simbirsoft-workshop/static/media/NavArrow.3f54b55d.svg",
@@ -32,8 +32,8 @@
   "entrypoints": [
     "static/js/runtime-main.4b5cda29.js",
     "static/css/2.ecb52157.chunk.css",
-    "static/js/2.d3674f68.chunk.js",
-    "static/css/main.c949d791.chunk.css",
-    "static/js/main.c856909c.chunk.js"
+    "static/js/2.b029faad.chunk.js",
+    "static/css/main.2067b2af.chunk.css",
+    "static/js/main.2784be85.chunk.js"
   ]
 }
