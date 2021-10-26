@@ -43,13 +43,15 @@ const OrderMenu = ({ orderData }) => {
         <h2 className={styles.title}>Ваш заказ:</h2>
 
         <div className={styles.orderInfoTab}>
-          <OrderItems orderData={orderData} />
+          <OrderItems orderData={orderData.items} />
         </div>
 
-        <div className={styles.price}>
-          <span className={styles.title}>Цена: </span>
-          <span className={styles.value}>16 000 ₽</span>
-        </div>
+        {orderData.price ? (
+          <div className={styles.price}>
+            <span className={styles.title}>Цена: </span>
+            <span className={styles.value}>{orderData.price} ₽</span>
+          </div>
+        ) : null}
       </section>
     </div>
   );

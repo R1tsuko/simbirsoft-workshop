@@ -1,62 +1,69 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import CheckBox from '../../ui/CheckBox/CheckBox';
 import DateInput from '../../ui/DateInput/DateInput';
 import RadioButton from '../../ui/RadioButton/RadioButton';
+import {
+  getRates,
+  selectColors,
+  selectControlsState,
+  selectRates,
+  selectRentEnd,
+  selectRentStart,
+  setControlsState,
+  pickRate,
+  setRentEnd,
+  setRentStart,
+} from '../../../../../store/slices/extraSlice';
+import { DEFAULT_COLOR } from '../../../../../utils/constants';
 import styles from './ExtraTab.module.scss';
-
-const addServicesControlsData = [
-  { id: 0, labelText: 'Полный бак, 500р', controlName: 'fullTank' },
-  { id: 1, labelText: 'Детское кресло, 200р', controlName: 'babyChair' },
-  { id: 2, labelText: 'Правый руль, 1600р', controlName: 'rightHand' },
-];
-
-const tariffControlsData = [
-  { id: 0, labelText: 'Поминутно, 7₽/мин', controlName: 'tariff' },
-  { id: 1, labelText: 'На сутки, 1999 ₽/сутки', controlName: 'tariff' },
-];
-
-const colorControlsData = [
-  { id: 0, labelText: 'Любой', controlName: 'color' },
-  { id: 1, labelText: 'Красный', controlName: 'color' },
-  { id: 2, labelText: 'Голубой', controlName: 'color' },
-];
-
-const defaultControlsState = {
-  fullTank: false,
-  babyChair: false,
-  rightHand: false,
-  tariff: null,
-  color: 0,
-};
+import { findByField } from '../../../../../utils/helpers';
 
 const ExtraTab = () => {
-  const [controlsState, setControlsState] = useState(defaultControlsState);
+  const controlsState = useSelector(selectControlsState);
+  const rentStart = useSelector(selectRentStart);
+  const rentEnd = useSelector(selectRentEnd);
+  const colors = useSelector(selectColors);
+  const rates = useSelector(selectRates);
+  const dispatch = useDispatch();
 
   const controlsHandler = (e) => {
     const { target } = e;
-    let value = target.type === 'checkbox' ? target.checked : target.value;
-    if (target.type === 'radio') {
-      value = +value;
-    }
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const { name } = target;
-
-    setControlsState({ ...controlsState, [name]: value });
+    if (name === 'rate') {
+      dispatch(pickRate(findByField(rates, 'id', value)));
+    }
+    dispatch(setControlsState({ ...controlsState, [name]: value }));
   };
+
+  const onDatePick = (actionCreator) => (date) => dispatch(actionCreator(date?.getTime()));
+
+  useEffect(() => {
+    dispatch(getRates());
+  }, []);
 
   return (
     <div className={styles.tabContainer}>
       <section className={styles.controlsSection}>
         <h2 className={styles.title}>Цвет</h2>
-
         <div className={classNames(styles.controlsContainer, styles.colorControls)}>
-          {colorControlsData.map((el) => (
+          <RadioButton
+            labelText={DEFAULT_COLOR}
+            onChange={controlsHandler}
+            name="color"
+            value={DEFAULT_COLOR}
+            checked={controlsState.color === DEFAULT_COLOR}
+          />
+          {colors.map((color) => (
             <RadioButton
-              labelText={el.labelText}
+              labelText={color}
               onChange={controlsHandler}
-              name={el.controlName}
-              value={el.id}
-              checked={controlsState.color === el.id}
+              name="color"
+              value={color}
+              checked={controlsState.color === color}
+              key={color}
             />
           ))}
         </div>
@@ -65,9 +72,24 @@ const ExtraTab = () => {
       <section className={styles.controlsSection}>
         <h2 className={styles.title}>Дата аренды</h2>
 
-        <div className={styles.controlsContainer}>
-          <DateInput labelText="С" />
-          <DateInput labelText="По" />
+        <div className={styles.dateInputsContainer}>
+          <DateInput
+            labelText="С"
+            placeholder="Введите дату и время"
+            pickedDate={rentStart}
+            onPickDate={onDatePick(setRentStart)}
+            minDate={new Date()}
+            maxDate={rentEnd}
+          />
+          <div className={styles.rentEndInputWrapper}>
+            <DateInput
+              labelText="По"
+              placeholder="Введите дату и время"
+              pickedDate={rentEnd}
+              onPickDate={onDatePick(setRentEnd)}
+              minDate={rentStart || new Date()}
+            />
+          </div>
         </div>
       </section>
 
@@ -75,13 +97,13 @@ const ExtraTab = () => {
         <h2 className={styles.title}>Тариф</h2>
 
         <div className={styles.controlsContainer}>
-          {tariffControlsData.map((el) => (
+          {rates.map((rate) => (
             <RadioButton
-              labelText={el.labelText}
+              labelText={`${rate.rateTypeId.name}, ${rate.price}₽/${rate.rateTypeId.unit}`}
               onChange={controlsHandler}
-              name={el.controlName}
-              value={el.id}
-              checked={controlsState.tariff === el.id}
+              name="rate"
+              value={rate.id}
+              checked={controlsState.rate === rate.id}
             />
           ))}
         </div>
@@ -91,14 +113,24 @@ const ExtraTab = () => {
         <h2 className={styles.title}>Доп услуги</h2>
 
         <div className={styles.controlsContainer}>
-          {addServicesControlsData.map((el) => (
-            <CheckBox
-              labelText={el.labelText}
-              onChange={controlsHandler}
-              name={el.controlName}
-              checked={controlsState[el.controlName]}
-            />
-          ))}
+          <CheckBox
+            labelText="Полный бак, 500р"
+            onChange={controlsHandler}
+            name="isFullTank"
+            checked={controlsState.isFullTank}
+          />
+          <CheckBox
+            labelText="Детское кресло, 200р"
+            onChange={controlsHandler}
+            name="isNeedChildChair"
+            checked={controlsState.isNeedChildChair}
+          />
+          <CheckBox
+            labelText="Правый руль, 1600р"
+            onChange={controlsHandler}
+            name="isRightWheel"
+            checked={controlsState.isRightWheel}
+          />
         </div>
       </section>
     </div>
