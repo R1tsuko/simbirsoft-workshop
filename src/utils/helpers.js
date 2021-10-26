@@ -1,4 +1,11 @@
-import { DEFAULT_COLOR, MS_IN_DAY, MS_IN_MIN, MS_IN_MONTH, MS_IN_WEEK } from './constants';
+import {
+  DEFAULT_COLOR,
+  MS_IN_DAY,
+  MS_IN_HOUR,
+  MS_IN_MIN,
+  MS_IN_MONTH,
+  MS_IN_WEEK,
+} from './constants';
 
 export const findByField = (arr, field, value) => arr.find((el) => el[field] === value);
 
@@ -13,6 +20,12 @@ export const clearExtraSlice = (state) => {
     isRightWheel: false,
     rate: null,
   };
+};
+
+const formatMsInDaysAndHours = (ms) => {
+  const days = Math.floor(ms / MS_IN_DAY);
+  const hours = ((ms % MS_IN_DAY) / MS_IN_HOUR).toFixed(1);
+  return (days ? `${days} д ` : '') + (hours ? `${hours} ч` : '');
 };
 
 export const prepareOrderDataForView = ({
@@ -40,7 +53,9 @@ export const prepareOrderDataForView = ({
 
     ...(car ? [{ name: 'Модель', text: car.name }] : []),
     ...(color !== DEFAULT_COLOR ? [{ name: 'Цвет', text: color }] : []),
-    ...(dateFrom && dateTo ? [{ name: 'Длительность аренды', text: dateTo - dateFrom }] : []),
+    ...(dateFrom && dateTo
+      ? [{ name: 'Длительность аренды', text: formatMsInDaysAndHours(dateTo - dateFrom) }]
+      : []),
     ...(rate
       ? [
           {

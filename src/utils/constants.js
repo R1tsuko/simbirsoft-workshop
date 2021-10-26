@@ -6,6 +6,7 @@ export const MAP_CITY_ZOOM = 11;
 export const MAP_POINT_ZOOM = 17;
 
 export const MS_IN_MIN = 60000;
+export const MS_IN_HOUR = 3600000;
 export const MS_IN_DAY = 86400000;
 export const MS_IN_WEEK = 604800000;
 export const MS_IN_MONTH = 2592000000;
