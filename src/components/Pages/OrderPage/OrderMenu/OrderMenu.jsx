@@ -46,12 +46,12 @@ const OrderMenu = ({ orderData }) => {
           <OrderItems orderData={orderData.items} />
         </div>
 
-        {orderData.price ? (
+        {orderData.price && (
           <div className={styles.price}>
             <span className={styles.title}>Цена: </span>
             <span className={styles.value}>{orderData.price} ₽</span>
           </div>
-        ) : null}
+        )}
       </section>
     </div>
   );

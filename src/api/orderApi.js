@@ -44,3 +44,10 @@ export const fetchOrder = async (orderId) => {
   const response = await instance.get(`order/${orderId}`);
   return response.data.data;
 };
+
+export const putOrderStatus = async (orderId, newOrderStatusId) => {
+  const response = await instance.put(`order/${orderId}`, {
+    orderStatusId: { id: newOrderStatusId },
+  });
+  return response.data.data;
+};

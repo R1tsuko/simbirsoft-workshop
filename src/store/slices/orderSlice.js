@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchOrder, fetchOrderStatus, postOrder } from '../../api/orderApi';
+import { putOrderStatus, fetchOrder, fetchOrderStatus, postOrder } from '../../api/orderApi';
 import { findByField, chooseTimeModifier } from '../../utils/helpers';
 import { CHILD_CHAIR_PRICE, FULL_TANK_PRICE, RIGHT_WHEEL_PRICE } from '../../utils/constants';
 import { pickCar } from './carSlice';
@@ -9,10 +9,12 @@ import { pickRate, setControlsState, setRentEnd, setRentStart } from './extraSli
 const initialState = {
   orderStatusIds: {
     confirmed: null,
+    canceled: null,
   },
   isLoading: false,
   isOrderCompleted: false,
   currentOrderId: null,
+  currentOrderStatusId: null,
 };
 
 export const orderSlice = createSlice({
@@ -20,7 +22,7 @@ export const orderSlice = createSlice({
   initialState,
   reducers: {
     setOrderStatusIds: (state, action) => {
-      state.orderStatusIds.confirmed = action.payload.confirmed;
+      state.orderStatusIds = action.payload;
     },
     setIsLoading: (state, action) => {
       state.isLoading = action.payload;
@@ -28,13 +30,16 @@ export const orderSlice = createSlice({
     setCurrentOrderId: (state, action) => {
       state.currentOrderId = action.payload;
     },
+    setCurrentOrderStatusId: (state, action) => {
+      state.currentOrderStatusId = action.payload;
+    },
     setIsOrderCompleted: (state, action) => {
       state.isOrderCompleted = action.payload;
     },
   },
 });
 
-const { setOrderStatusIds, setIsLoading } = orderSlice.actions;
+const { setOrderStatusIds, setIsLoading, setCurrentOrderStatusId } = orderSlice.actions;
 export const { setCurrentOrderId, setIsOrderCompleted } = orderSlice.actions;
 
 export const getOrderStatusIds = () => async (dispatch, getState) => {
@@ -42,7 +47,10 @@ export const getOrderStatusIds = () => async (dispatch, getState) => {
     dispatch(setIsLoading(true));
     const orderStatusIds = await fetchOrderStatus();
     dispatch(
-      setOrderStatusIds({ confirmed: findByField(orderStatusIds, 'name', 'Подтвержденные').id })
+      setOrderStatusIds({
+        confirmed: findByField(orderStatusIds, 'name', 'Подтвержденные').id,
+        canceled: findByField(orderStatusIds, 'name', 'Отмененые').id,
+      })
     );
     dispatch(setIsLoading(false));
   }
@@ -81,6 +89,7 @@ export const makeOrder =
     });
 
     dispatch(setCurrentOrderId(response.id));
+    dispatch(setCurrentOrderStatusId(response.orderStatusId.id));
     dispatch(setIsOrderCompleted(true));
     dispatch(setIsLoading(false));
   };
@@ -88,6 +97,7 @@ export const makeOrder =
 export const getOrderData = (orderId) => async (dispatch) => {
   dispatch(setIsLoading(true));
   const {
+    orderStatusId,
     carId,
     cityId,
     pointId,
@@ -110,6 +120,16 @@ export const getOrderData = (orderId) => async (dispatch) => {
     setControlsState({ color, isFullTank, isNeedChildChair, isRightWheel, rate: rateId.id })
   );
   dispatch(pickRate(rateId));
+  dispatch(setCurrentOrderStatusId(orderStatusId.id));
+  dispatch(setIsLoading(false));
+};
+export const cancelOrder = (orderId) => async (dispatch, getState) => {
+  dispatch(setIsLoading(true));
+
+  const response = await putOrderStatus(orderId, getState().order.orderStatusIds.canceled);
+
+  dispatch(setCurrentOrderStatusId(response.orderStatusId.id));
+  dispatch(setIsOrderCompleted(false));
   dispatch(setIsLoading(false));
 };
 
@@ -162,6 +182,8 @@ export const selectOrderData = (state) => {
   };
 };
 export const selectCurrentOrderId = (state) => state.order.currentOrderId;
+export const selectCurrentOrderStatusId = (state) => state.order.currentOrderStatusId;
+export const selectOrderStatusIds = (state) => state.order.orderStatusIds;
 export const selectIsOrderCompleted = (state) => state.order.isOrderCompleted;
 
 export default orderSlice.reducer;

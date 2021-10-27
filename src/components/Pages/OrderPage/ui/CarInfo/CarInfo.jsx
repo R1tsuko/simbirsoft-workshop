@@ -14,7 +14,7 @@ const CarInfo = ({ name, number, tank, img, accessDate }) => {
         <div className={styles.access}>
           <span className={styles.title}>Доступна с </span>
           <span className={styles.subject}>
-            {accessDate ? format(accessDate, 'dd.MM.yyyy HH:mm') : null}
+            {accessDate && format(accessDate, 'dd.MM.yyyy HH:mm')}
           </span>
         </div>
       </div>

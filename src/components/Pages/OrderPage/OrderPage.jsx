@@ -10,7 +10,9 @@ import {
   makeOrder,
   selectCurrentOrderId,
   selectIsOrderCompleted,
-  setIsOrderCompleted,
+  cancelOrder,
+  selectCurrentOrderStatusId,
+  selectOrderStatusIds,
 } from '../../../store/slices/orderSlice';
 import Header from '../../Header/Header';
 import Button from '../../commonUi/Button/Button';
@@ -34,6 +36,8 @@ const OrderPage = ({ openMenu }) => {
   const isLoading = useSelector(selectIsLoading);
   const currentOrderId = useSelector(selectCurrentOrderId);
   const isOrderCompleted = useSelector(selectIsOrderCompleted);
+  const orderStatusId = useSelector(selectCurrentOrderStatusId);
+  const orderStatusIds = useSelector(selectOrderStatusIds);
   const orderDataForView = prepareOrderDataForView(orderData);
   const [IsConfirmPopupActive, setIsConfirmPopupActive] = useState(false);
   const dispatch = useDispatch();
@@ -148,12 +152,12 @@ const OrderPage = ({ openMenu }) => {
               <OrderItems orderData={orderDataForView.items} />
             </div>
 
-            {orderDataForView.price ? (
+            {orderDataForView.price && (
               <div className={styles.price}>
                 <span className={styles.title}>Цена: </span>
                 <span className={styles.value}>{orderDataForView.price} ₽</span>
               </div>
-            ) : null}
+            )}
           </div>
 
           <div className={styles.actionWrapper}>
@@ -200,11 +204,13 @@ const OrderPage = ({ openMenu }) => {
               <Route path="/order/view">
                 <Button
                   text="Отменить"
-                  onClick={() => dispatch(setIsOrderCompleted(false))}
-                  linkTo="/"
+                  onClick={() => {
+                    dispatch(cancelOrder(currentOrderId));
+                  }}
                   width="287px"
                   canceling
                   expandOnSmallScreen
+                  disabled={orderStatusId === orderStatusIds.canceled}
                 />
               </Route>
             </Switch>
@@ -212,9 +218,9 @@ const OrderPage = ({ openMenu }) => {
         </section>
       </main>
       <OrderMenu orderData={orderDataForView} />
-      {IsConfirmPopupActive ? (
+      {IsConfirmPopupActive && (
         <ConfirmPopUp onCancelClick={onCancelPopupClick} onConfirmClick={onConfirmPopupClick} />
-      ) : null}
+      )}
     </div>
   );
 };

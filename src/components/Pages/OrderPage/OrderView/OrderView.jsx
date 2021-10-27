@@ -4,13 +4,19 @@ import { useLocation } from 'react-router-dom';
 import { selectRentStart } from '../../../../store/slices/extraSlice';
 import CarInfo from '../ui/CarInfo/CarInfo';
 import styles from './OrderView.module.scss';
-import { getOrderData } from '../../../../store/slices/orderSlice';
+import {
+  getOrderData,
+  selectCurrentOrderStatusId,
+  selectOrderStatusIds,
+} from '../../../../store/slices/orderSlice';
 import { selectPickedCar } from '../../../../store/slices/carSlice';
 
 const OrderView = () => {
   const car = useSelector(selectPickedCar);
   const accessDate = useSelector(selectRentStart);
-  const orderId = useLocation().pathname.slice(12);
+  const orderId = useLocation().pathname.split('/').pop();
+  const orderStatusId = useSelector(selectCurrentOrderStatusId);
+  const orderStatusIds = useSelector(selectOrderStatusIds);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,7 +25,9 @@ const OrderView = () => {
 
   return (
     <section className={styles.container}>
-      <h2 className={styles.title}>Ваш заказ подтверждён</h2>
+      <h2 className={styles.title}>
+        Ваш заказ {orderStatusId === orderStatusIds.confirmed ? 'подтверждён' : 'отменен'}
+      </h2>
       <div className={styles.carInfoWrapper}>
         <CarInfo
           name={car?.name}
