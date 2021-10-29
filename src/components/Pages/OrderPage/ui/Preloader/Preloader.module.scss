@@ -4,7 +4,7 @@
 .preloaderWrapper {
   position: absolute;
   width: 100vw;
-  height: calc(100vh - 200px);
+  height: calc(100vh - 120px);
   margin-top: 90px;
   z-index: 100;
 
@@ -82,7 +82,7 @@
 @media (min-width: 768px) {
   .preloaderWrapper {
     width: calc(100vw - #{$tablet-sidebar-width});
-    height: 70vh;
+    height: 85vh;
   }
 }
 

@@ -7,13 +7,7 @@ const ConfirmPopUp = ({ onCancelClick, onConfirmClick }) => {
       <div className={styles.content}>
         <h2 className={styles.title}>Подтвердить заказ</h2>
         <div className={styles.confirmWrapper}>
-          <Button
-            text="Подтвердить"
-            onClick={onConfirmClick}
-            linkTo="/order/view"
-            width="177px"
-            roundedOnSmallScreen
-          />
+          <Button text="Подтвердить" onClick={onConfirmClick} width="177px" roundedOnSmallScreen />
         </div>
         <div className={styles.cancelWrapper}>
           <Button

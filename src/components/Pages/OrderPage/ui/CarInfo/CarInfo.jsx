@@ -1,6 +1,7 @@
+import { format } from 'date-fns';
 import styles from './CarInfo.module.scss';
 
-const CarInfo = ({ name, number, tank, img }) => {
+const CarInfo = ({ name, number, tank, img, accessDate }) => {
   return (
     <article className={styles.carInfoContainer}>
       <div className={styles.text}>
@@ -12,7 +13,9 @@ const CarInfo = ({ name, number, tank, img }) => {
         </div>
         <div className={styles.access}>
           <span className={styles.title}>Доступна с </span>
-          <span className={styles.subject}>12.06.2019 12:00</span>
+          <span className={styles.subject}>
+            {accessDate && format(accessDate, 'dd.MM.yyyy HH:mm')}
+          </span>
         </div>
       </div>
       <div className={styles.imgWrapper}>

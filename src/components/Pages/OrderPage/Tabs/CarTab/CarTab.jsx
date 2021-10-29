@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { findByField } from '../../../../../helpers';
+import { findByField } from '../../../../../utils/helpers';
 import {
-  getCars,
-  getCategories,
+  getCarsData,
   pickCar,
   selectCars,
   selectCategories,
@@ -11,16 +10,15 @@ import {
 } from '../../../../../store/slices/carSlice';
 import CarCard from '../../ui/CarCard/CarCard';
 import RadioButton from '../../ui/RadioButton/RadioButton';
+import { DEFAULT_CAR_CATEGORY_ID } from '../../../../../utils/constants';
 import styles from './CarTab.module.scss';
-
-const DEFAULT_CATEGORY_ID = null;
 
 const CarTab = () => {
   const dispatch = useDispatch();
   const categories = useSelector(selectCategories);
   const pickedCar = useSelector(selectPickedCar);
   const cars = useSelector(selectCars);
-  const [carCategoryId, setCarCategoryId] = useState(DEFAULT_CATEGORY_ID);
+  const [carCategoryId, setCarCategoryId] = useState(DEFAULT_CAR_CATEGORY_ID);
 
   const onRadioClick = (newCarCategoryId) => () => {
     setCarCategoryId(newCarCategoryId);
@@ -29,8 +27,7 @@ const CarTab = () => {
   const onCarCardClick = (newCarId) => () => dispatch(pickCar(findByField(cars, 'id', newCarId)));
 
   useEffect(() => {
-    dispatch(getCars());
-    dispatch(getCategories());
+    dispatch(getCarsData());
   }, []);
 
   return (
@@ -38,8 +35,8 @@ const CarTab = () => {
       <div className={styles.radioGroupContainer}>
         <RadioButton
           labelText="Любой"
-          onChange={onRadioClick(DEFAULT_CATEGORY_ID)}
-          checked={carCategoryId === DEFAULT_CATEGORY_ID}
+          onChange={onRadioClick(DEFAULT_CAR_CATEGORY_ID)}
+          checked={carCategoryId === DEFAULT_CAR_CATEGORY_ID}
           name="carClass"
         />
         {categories.map((el) => (
@@ -56,7 +53,8 @@ const CarTab = () => {
       <div className={styles.carListContainer}>
         {cars
           .filter(
-            (car) => carCategoryId === DEFAULT_CATEGORY_ID || car.categoryId?.id === carCategoryId
+            (car) =>
+              carCategoryId === DEFAULT_CAR_CATEGORY_ID || car.categoryId?.id === carCategoryId
           )
           .map((el) => (
             <div className={styles.cardWrapper} key={el.id}>

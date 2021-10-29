@@ -13,13 +13,11 @@ import {
   selectPoints,
   selectPointsCoords,
 } from '../../../../store/slices/locationSlice';
+import { findByField } from '../../../../utils/helpers';
+import { MAP_CITY_ZOOM, MAP_DEFAULT_ZOOM, MAP_POINT_ZOOM } from '../../../../utils/constants';
 import mapIcon from '../../../../assets/icons/MapIcon.svg';
-import { findByField } from '../../../../helpers';
 
-const DEFAULT_ZOOM = 5;
-const CITY_ZOOM = 11;
-const POINT_ZOOM = 17;
-const defaultMapState = { center: [55.032286, 51.673704], zoom: DEFAULT_ZOOM };
+const defaultMapState = { center: [55.032286, 51.673704], zoom: MAP_DEFAULT_ZOOM };
 
 const YandexMap = () => {
   const pointsCoords = useSelector(selectPointsCoords);
@@ -34,19 +32,19 @@ const YandexMap = () => {
   const [ymapsApi, setYmapsApi] = useState(null);
 
   useEffect(() => {
-    if (pickedCity && !pickedPoint) {
+    if (pickedCity && !pickedPoint && pointsCoords.length) {
       setMapState({
         center: citiesCoords.find((coords) => coords.cityId === pickedCity.id).coords,
-        zoom: CITY_ZOOM,
+        zoom: MAP_CITY_ZOOM,
       });
     }
   }, [pickedCity]);
 
   useEffect(() => {
-    if (pickedPoint) {
+    if (pickedPoint && pointsCoords.length) {
       setMapState({
         center: pointsCoords.find((coords) => coords.pointId === pickedPoint.id).coords,
-        zoom: POINT_ZOOM,
+        zoom: MAP_POINT_ZOOM,
       });
     }
   }, [pickedPoint]);

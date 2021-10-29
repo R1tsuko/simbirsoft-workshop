@@ -53,7 +53,7 @@ export const selectPickedPoint = (state) => state.location.pickedPoint;
 export const selectIsLocationDataFetching = (state) => state.location.isLocationDataFetching;
 
 export const getLocationData = () => async (dispatch, getState) => {
-  if (getState().location.points.length === 0) {
+  if (!getState().location.points.length) {
     dispatch(setIsLoading(true));
     dispatch(setIsLocationDataFetching(true));
 
@@ -65,7 +65,7 @@ export const getLocationData = () => async (dispatch, getState) => {
 };
 
 export const getLocationDataCoords = (ymaps) => async (dispatch, getState) => {
-  if (getState().location.pointsCoords.length === 0) {
+  if (!getState().location.pointsCoords.length) {
     const cities = selectCities(getState());
     const points = selectPoints(getState());
 

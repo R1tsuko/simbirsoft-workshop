@@ -24,3 +24,30 @@ export const fetchCars = async () => {
   const response = await instance.get('car');
   return response.data.data;
 };
+
+export const fetchRates = async () => {
+  const response = await instance.get('rate');
+  return response.data.data;
+};
+
+export const fetchOrderStatus = async () => {
+  const response = await instance.get('orderStatus');
+  return response.data.data;
+};
+
+export const postOrder = async (orderData) => {
+  const response = await instance.post('order', orderData);
+  return response.data.data;
+};
+
+export const fetchOrder = async (orderId) => {
+  const response = await instance.get(`order/${orderId}`);
+  return response.data.data;
+};
+
+export const putOrderStatus = async (orderId, newOrderStatusId) => {
+  const response = await instance.put(`order/${orderId}`, {
+    orderStatusId: { id: newOrderStatusId },
+  });
+  return response.data.data;
+};

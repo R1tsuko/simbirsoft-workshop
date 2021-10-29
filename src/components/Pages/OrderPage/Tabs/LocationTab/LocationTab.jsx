@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { findByField } from '../../../../../helpers';
+import { findByField } from '../../../../../utils/helpers';
 import {
   getLocationData,
   pickCity,

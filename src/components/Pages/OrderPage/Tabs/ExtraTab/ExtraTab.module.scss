@@ -21,6 +21,12 @@
       flex-direction: column;
       row-gap: 8px;
     }
+    .dateInputsContainer {
+      margin-top: 12px;
+      .rentEndInputWrapper {
+        margin-top: 8px;
+      }
+    }
     .colorControls {
       flex-direction: row;
       column-gap: 16px;
